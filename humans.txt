@@ -1,6 +1,6 @@
 Amazon Flat File Diagnoser
 
-Site: https://amazon-flat-file-diagnoser.vercel.app/
+Site: https://flatfile.ymirtool.com/
 Repository: https://github.com/whywbhydyq/amazon-flat-file-diagnoser
 
 Purpose:

@@ -4,7 +4,7 @@
 
 ## 第 1 周：让页面可被找到
 
-- 提交 `https://amazon-flat-file-diagnoser.vercel.app/sitemap.xml` 到 Google Search Console。
+- 提交 `https://flatfile.ymirtool.com/sitemap.xml` 到 Google Search Console。
 - 在 Vercel Dashboard 查看 Web Analytics 是否开始记录访问。
 - 用真实浏览器测试 5 个 SEO 页面和主工具页。
 - 准备 3 份脱敏示例报告，覆盖 8541、99010、90244。

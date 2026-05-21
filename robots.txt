@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amazon-flat-file-diagnoser.vercel.app/sitemap.xml
+Sitemap: https://flatfile.ymirtool.com/sitemap.xml

@@ -2,7 +2,7 @@
 
 一个纯前端网页工具，用来解析 Amazon Flat File / Seller Central 批量上传后的 Processing Report。
 
-Production: https://amazon-flat-file-diagnoser.vercel.app/
+Production: https://flatfile.ymirtool.com/
 
 ## 功能
 
@@ -34,7 +34,7 @@ python -m http.server 4173 --bind 127.0.0.1
 Sitemap:
 
 ```text
-https://amazon-flat-file-diagnoser.vercel.app/sitemap.xml
+https://flatfile.ymirtool.com/sitemap.xml
 ```
 
 The homepage includes a Google Search Console verification meta tag.
