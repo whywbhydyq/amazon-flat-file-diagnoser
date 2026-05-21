@@ -1,0 +1,55 @@
+name: 脱敏错误报告反馈
+description: 提交 Amazon Flat File Processing Report 中未覆盖或解释不准确的错误码
+title: "[Error Code] "
+labels: ["error-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请只提交脱敏信息。不要包含真实店铺名、买家信息、未公开商品编码、订单号、账号截图或任何敏感资料。
+  - type: input
+    id: error-code
+    attributes:
+      label: 错误码
+      description: 例如 8541、99010、90244
+      placeholder: "99010"
+    validations:
+      required: true
+  - type: textarea
+    id: error-message
+    attributes:
+      label: 原始错误信息
+      description: 粘贴 Processing Report 里的 error-message，可替换 SKU 和商品名为占位符。
+      placeholder: "A value is required for item_name."
+    validations:
+      required: true
+  - type: input
+    id: attribute
+    attributes:
+      label: 字段名
+      description: 报告里的 attribute-name 或你怀疑出错的模板字段。
+      placeholder: "item_name"
+  - type: textarea
+    id: tried
+    attributes:
+      label: 已尝试的修复方法
+      description: 写下你已经改过哪些字段、是否重新下载模板、是否联系过 Seller Support。
+    validations:
+      required: false
+  - type: dropdown
+    id: marketplace
+    attributes:
+      label: 站点
+      options:
+        - US
+        - UK
+        - DE
+        - FR
+        - IT
+        - ES
+        - JP
+        - CA
+        - MX
+        - Other
+    validations:
+      required: false
