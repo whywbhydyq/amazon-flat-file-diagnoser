@@ -1,0 +1,10 @@
+{
+  "name": "Amazon Flat File 错误诊断器",
+  "short_name": "Flat File 诊断",
+  "description": "解析 Amazon Flat File Processing Report，生成中文修复清单。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf6",
+  "theme_color": "#0f766e",
+  "lang": "zh-CN"
+}

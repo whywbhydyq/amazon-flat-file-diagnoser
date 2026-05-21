@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Flat File 错误诊断器 | 批量上传错误码中文修复工具</title>
+    <meta
+      name="description"
+      content="免费解析 Amazon Flat File Processing Report，自动识别 8541、99010、90244 等错误码，定位 SKU、行号和字段，生成中文修复步骤与 Seller Support Case 话术。"
+    />
+    <meta
+      name="keywords"
+      content="Amazon Flat File,亚马逊批量上传错误,Processing Report,亚马逊错误码8541,亚马逊错误码99010,亚马逊变体上传错误,Amazon Seller Central"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="Amazon Flat File Diagnoser" />
+    <link rel="canonical" href="https://demo-project2-three.vercel.app/" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://demo-project2-three.vercel.app/" />
+    <meta property="og:title" content="Amazon Flat File 错误诊断器" />
+    <meta
+      property="og:description"
+      content="上传亚马逊批量上传处理报告，快速看懂错误码、SKU、行号和修复步骤。文件仅在浏览器本地解析。"
+    />
+    <meta property="og:site_name" content="Amazon Flat File 错误诊断器" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amazon Flat File 错误诊断器" />
+    <meta
+      name="twitter:description"
+      content="解析 Amazon Processing Report，生成中文修复清单和 Seller Support Case 话术。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Amazon Flat File 错误诊断器",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://demo-project2-three.vercel.app/",
+        "description": "解析 Amazon Flat File Processing Report，识别错误码、SKU、行号和字段，并生成中文修复步骤。",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Amazon Processing Report 本地解析",
+          "错误码中文解释",
+          "SKU 和行号定位",
+          "Seller Support Case 话术生成",
+          "CSV 修复清单导出"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">AF</span>
+        <div>
+          <strong>Amazon Flat File 错误诊断器</strong>
+          <span>本地解析处理报告，不上传文件</span>
+        </div>
+      </div>
+      <nav class="top-actions" aria-label="页面导航">
+        <a href="#rules">支持错误码</a>
+        <a href="#workflow">修复流程</a>
+        <a href="#privacy">隐私说明</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="tool-hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">For Amazon sellers</p>
+          <h1 id="page-title">上传 Processing Report，10 秒看懂该改哪一行。</h1>
+          <p class="lead">
+            解析亚马逊批量上传后的错误报告，按错误码、SKU、行号分组，输出中文解释、修复字段、优先级和可复制的 Case 话术。
+          </p>
+          <div class="metric-strip" aria-label="工具能力">
+            <div><strong>10</strong><span>首批错误码</span></div>
+            <div><strong>0</strong><span>服务器上传</span></div>
+            <div><strong>3</strong><span>导出格式</span></div>
+          </div>
+        </div>
+
+        <section class="upload-panel" aria-label="上传处理报告">
+          <div id="dropzone" class="dropzone" tabindex="0">
+            <input id="fileInput" type="file" accept=".txt,.csv,.tsv" />
+            <div class="upload-icon" aria-hidden="true">+</div>
+            <h2>拖入报告或选择文件</h2>
+            <p>支持 .txt / .csv / .tsv。第一版先不解析 .xlsx。</p>
+            <button id="chooseFile" class="primary-button" type="button">选择 Processing Report</button>
+          </div>
+          <div class="sample-row">
+            <button id="loadSample" class="ghost-button" type="button">加载示例报告</button>
+            <button id="clearAll" class="icon-button" type="button" aria-label="清空结果" title="清空结果">×</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="results" class="results hidden" aria-live="polite">
+        <div class="section-heading">
+          <p class="eyebrow">Diagnosis</p>
+          <h2>诊断结果</h2>
+        </div>
+
+        <div id="summaryCards" class="summary-grid"></div>
+
+        <div class="toolbar">
+          <div class="segmented" role="tablist" aria-label="结果视图">
+            <button class="tab-button active" type="button" data-view="code">按错误码</button>
+            <button class="tab-button" type="button" data-view="sku">按 SKU</button>
+            <button class="tab-button" type="button" data-view="row">按行号</button>
+          </div>
+          <div class="export-actions">
+            <button id="copyMarkdown" class="secondary-button" type="button">复制修复清单</button>
+            <button id="downloadCsv" class="secondary-button" type="button">导出 CSV</button>
+          </div>
+        </div>
+
+        <div id="errorList" class="error-list"></div>
+      </section>
+
+      <section id="rules" class="content-band">
+        <div class="section-heading">
+          <p class="eyebrow">Rule Library</p>
+          <h2>第一版支持的高频错误码</h2>
+        </div>
+        <div id="ruleGrid" class="rule-grid"></div>
+      </section>
+
+      <section id="workflow" class="content-band workflow">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2>建议修复顺序</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <strong>先处理高风险错误</strong>
+            <span>例如 ASIN 冲突、变体关系错误、商品编码无效，这类会阻断 SKU 创建或更新。</span>
+          </li>
+          <li>
+            <strong>再补必填字段</strong>
+            <span>缺少品牌、标题、分类属性、图片等字段时，先补齐模板要求，再重新上传。</span>
+          </li>
+          <li>
+            <strong>最后处理格式问题</strong>
+            <span>字段长度、枚举值、URL、大小写、空格等问题可以批量修正后统一重传。</span>
+          </li>
+        </ol>
+      </section>
+
+      <section id="privacy" class="content-band privacy">
+        <div class="section-heading">
+          <p class="eyebrow">Privacy</p>
+          <h2>隐私说明</h2>
+        </div>
+        <p>
+          当前版本只在浏览器本地读取文件内容，不会把报告上传到服务器。刷新页面后，解析结果会被清空。
+        </p>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
