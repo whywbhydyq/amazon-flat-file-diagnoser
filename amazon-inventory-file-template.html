@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Inventory File Template 填写指南 | 库存文件模板排查</title>
+    <meta name="description" content="Amazon Inventory File Template 填写前应确认站点、分类、必填字段、Valid Values、编码和保存格式，避免批量上传失败。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-inventory-file-template" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Inventory Template</p><h1>Amazon Inventory File Template 填写指南</h1><p class="lead">很多错误不是字段本身难，而是模板站点、分类或版本不对。填写前先确认模板来源。</p></section>
+      <section class="article-card"><h2>填写前检查</h2><ol><li>确认模板来自目标站点和目标分类。</li><li>查看 Required 字段，不要只填商品基础信息。</li><li>使用 Valid Values 页中的允许值。</li><li>保存为制表符分隔文本，避免 Excel 改坏编码和列头。</li></ol></section>
+      <section class="article-card"><h2>上传后检查</h2><p>上传后下载 Processing Report，按错误码和原始行号回到模板修复。不要直接覆盖重传整份未知错误文件。</p><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

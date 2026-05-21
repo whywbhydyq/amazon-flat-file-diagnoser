@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Variation Flat File 错误排查 | 变体上传失败修复</title>
+    <meta name="description" content="Amazon 变体 Flat File 上传失败时，重点检查 parentage、parent_sku、relationship_type、variation_theme 和变体属性组合。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-variation-flat-file-error" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Variation Error</p><h1>Amazon 变体 Flat File 错误排查</h1><p class="lead">变体上传失败常常不是标题或图片问题，而是父体、子体、变体主题和属性组合没有保持一致。</p></section>
+      <section class="article-card"><h2>核心字段</h2><p><code>parentage</code>、<code>parent_sku</code>、<code>relationship_type</code>、<code>variation_theme</code>、颜色、尺寸、数量等变体属性。</p></section>
+      <section class="article-card"><h2>排查顺序</h2><ol><li>父体不填价格、库存和商品编码，子体填写真实售卖信息。</li><li>所有子体指向同一个 parent_sku。</li><li>所有行使用同一个 variation_theme。</li><li>每个子体的变体属性组合必须唯一。</li></ol><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

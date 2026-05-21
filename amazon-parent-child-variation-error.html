@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 父子体关系错误怎么修 | Parent Child Variation 指南</title>
+    <meta name="description" content="Amazon 父子体关系错误常见于 parent_sku、parentage、relationship_type 和 variation_theme 不一致。查看修复清单。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-parent-child-variation-error" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Parent Child</p><h1>Amazon 父子体关系错误怎么修</h1><p class="lead">父子体错误通常会导致整个变体组失败。先确认结构，再处理标题、图片和卖点。</p></section>
+      <section class="article-card"><h2>父体行检查</h2><ul><li><code>parentage</code> 为 parent。</li><li>不填写库存、价格和商品编码。</li><li>填写统一标题、品牌和 variation_theme。</li></ul></section>
+      <section class="article-card"><h2>子体行检查</h2><ul><li><code>parentage</code> 为 child。</li><li><code>parent_sku</code> 指向父体 SKU。</li><li>填写价格、库存、商品编码和变体属性。</li></ul><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

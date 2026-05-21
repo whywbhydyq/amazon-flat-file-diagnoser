@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 20000 错误怎么解决 | 通用处理失败排查</title>
+    <meta name="description" content="Amazon 20000 错误通常是 Flat File 通用处理失败，可能与模板版本、编码、站点分类或系统处理有关。查看最小复现排查流程。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-20000" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Error 20000</p><h1>Amazon 20000 错误：通用处理失败</h1><p class="lead">20000 往往缺少明确字段，处理时不要盲目大改整份模板，先做最小复现。</p></section>
+      <section class="article-card"><h2>可能原因</h2><p>模板版本不匹配、站点或分类选错、文件编码问题、列头被修改、Excel 保存破坏制表符结构、亚马逊系统临时处理异常。</p></section>
+      <section class="article-card"><h2>修复步骤</h2><ol><li>重新从当前站点 Seller Central 下载最新版模板。</li><li>只保留 1-3 个报错 SKU 制作最小测试文件。</li><li>确认文件为制表符分隔文本，列头未被翻译或改名。</li><li>最小文件仍失败时，把报告和测试文件一起提交 Seller Support。</li></ol><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

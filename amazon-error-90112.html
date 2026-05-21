@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 90112 错误怎么解决 | 字段值不被接受</title>
+    <meta name="description" content="Amazon Flat File 报错 90112 通常表示字段值不在允许枚举范围内，或大小写、格式、单位与模板要求不一致。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-90112" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Error 90112</p><h1>Amazon 90112 错误：字段值不是允许值</h1><p class="lead">90112 常见于分类模板的 Valid Values。你填写的值看起来合理，但不在亚马逊当前模板允许列表中。</p></section>
+      <section class="article-card"><h2>常见字段</h2><p><code>condition_type</code>、<code>fulfillment_channel</code>、<code>color_name</code>、<code>size_name</code>、分类枚举属性。</p></section>
+      <section class="article-card"><h2>修复步骤</h2><ol><li>在模板 Data Definitions 中查找该字段。</li><li>使用 Valid Values 页里的原始枚举值，不要自行翻译。</li><li>检查大小写、空格、连字符和复数形式。</li><li>如果字段没有允许值列表，先用一个 SKU 做最小测试。</li></ol><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

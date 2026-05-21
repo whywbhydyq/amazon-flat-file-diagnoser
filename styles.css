@@ -622,6 +622,25 @@ h3 {
   min-height: 44px;
 }
 
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 26px 0 46px;
+  color: var(--muted);
+}
+
+.site-footer a {
+  color: var(--muted);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--teal-strong);
+}
+
 .rule-card {
   border: 1px solid var(--line);
   border-radius: 8px;
