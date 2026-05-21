@@ -2,6 +2,8 @@
 
 一个纯前端网页工具，用来解析 Amazon Flat File / Seller Central 批量上传后的 Processing Report。
 
+Production: https://amazon-flat-file-diagnoser.vercel.app/
+
 ## 功能
 
 - 本地解析 `.txt`、`.csv`、`.tsv` 报告
@@ -10,6 +12,8 @@
 - 按错误码、SKU、行号分组
 - 生成中文修复步骤和 Seller Support Case 话术
 - 导出 CSV 或复制 Markdown 修复清单
+- SEO 长尾页面覆盖常见 Flat File 错误码和上传失败场景
+- About / Contact / Privacy Policy / Terms 页面，便于信任建设和后续广告审核
 
 ## 本地运行
 
@@ -24,3 +28,13 @@ python -m http.server 4173 --bind 127.0.0.1
 ## 隐私
 
 文件只在浏览器本地解析，不上传服务器。
+
+## Search Console
+
+Sitemap:
+
+```text
+https://amazon-flat-file-diagnoser.vercel.app/sitemap.xml
+```
+
+The homepage includes a Google Search Console verification meta tag.
