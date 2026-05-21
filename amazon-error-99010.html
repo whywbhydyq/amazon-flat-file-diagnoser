@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 99010 错误怎么解决 | 缺少必填字段修复指南</title>
+    <meta name="description" content="Amazon Flat File 报错 99010 多数表示分类模板缺少必填字段。查看中文原因、常见字段和重新上传前检查清单。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-99010" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="./amazon-error-8541.html">8541 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Error 99010</p>
+        <h1>Amazon 99010 错误：模板缺少必填字段</h1>
+        <p class="lead">99010 通常不是系统坏了，而是当前分类、站点或商品类型要求的字段没有填，或你使用了过期模板。</p>
+      </section>
+      <section class="article-card">
+        <h2>常见缺失字段</h2>
+        <p><code>item_name</code>、<code>brand</code>、<code>product_type</code>、<code>recommended_browse_nodes</code>、变体主题、分类必填属性。</p>
+      </section>
+      <section class="article-card">
+        <h2>修复步骤</h2>
+        <ol>
+          <li>在 Processing Report 中找到 <code>attribute-name</code> 或错误信息里的字段名。</li>
+          <li>回到最新版分类模板，查看 Data Definitions 页。</li>
+          <li>补齐所有 Required 字段，不要只补标题和品牌。</li>
+          <li>保存为制表符分隔文本后，先用少量 SKU 测试上传。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

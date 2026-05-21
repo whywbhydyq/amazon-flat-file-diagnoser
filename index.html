@@ -14,12 +14,12 @@
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Amazon Flat File Diagnoser" />
-    <link rel="canonical" href="https://demo-project2-three.vercel.app/" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/" />
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#0f766e" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
-    <meta property="og:url" content="https://demo-project2-three.vercel.app/" />
+    <meta property="og:url" content="https://amazon-flat-file-diagnoser.vercel.app/" />
     <meta property="og:title" content="Amazon Flat File 错误诊断器" />
     <meta
       property="og:description"
@@ -40,7 +40,7 @@
         "name": "Amazon Flat File 错误诊断器",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "url": "https://demo-project2-three.vercel.app/",
+        "url": "https://amazon-flat-file-diagnoser.vercel.app/",
         "description": "解析 Amazon Flat File Processing Report，识别错误码、SKU、行号和字段，并生成中文修复步骤。",
         "offers": {
           "@type": "Offer",
@@ -164,9 +164,41 @@
           当前版本只在浏览器本地读取文件内容，不会把报告上传到服务器。刷新页面后，解析结果会被清空。
         </p>
       </section>
+
+      <section id="guides" class="content-band">
+      <div class="section-heading">
+        <p class="eyebrow">SEO Guides</p>
+        <h2>常见错误码修复指南</h2>
+      </div>
+      <div class="guide-grid">
+        <a href="./amazon-error-8541.html">Amazon 8541 错误：ASIN 信息冲突</a>
+        <a href="./amazon-error-99010.html">Amazon 99010 错误：缺少必填字段</a>
+        <a href="./amazon-error-90244.html">Amazon 90244 错误：变体关系错误</a>
+        <a href="./amazon-error-8560.html">Amazon 8560 错误：SKU 创建失败</a>
+        <a href="./amazon-processing-report.html">Processing Report 中文阅读指南</a>
+      </div>
+      </section>
+
+      <section id="feedback" class="content-band feedback-band">
+      <div class="section-heading">
+        <p class="eyebrow">Feedback</p>
+        <h2>没有覆盖你的错误码？</h2>
+      </div>
+      <p>
+        把脱敏后的错误码、错误信息和字段名提交到 GitHub Issues。不要上传真实店铺名、买家信息、未公开商品编码或账号截图。
+      </p>
+      <a
+        class="primary-link"
+        href="https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new?title=%E6%96%B0%E9%94%99%E8%AF%AF%E7%A0%81%E5%8F%8D%E9%A6%88&body=%E9%94%99%E8%AF%AF%E7%A0%81%EF%BC%9A%0A%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%EF%BC%9A%0A%E5%AD%97%E6%AE%B5%E5%90%8D%EF%BC%9A%0A%E4%BD%A0%E5%B7%B2%E5%B0%9D%E8%AF%95%E7%9A%84%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%B3%95%EF%BC%9A"
+        target="_blank"
+        rel="noreferrer"
+      >提交脱敏错误报告</a>
+      </section>
     </main>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script defer src="/_vercel/insights/script.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

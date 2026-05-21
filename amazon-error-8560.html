@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 8560 错误怎么解决 | SKU 创建失败修复指南</title>
+    <meta name="description" content="Amazon 8560 错误表示 SKU 无法创建或更新，常见原因包括商品编码、分类、标题、品牌或 GTIN 豁免信息缺失。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-8560" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="./amazon-error-90244.html">90244 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Error 8560</p>
+        <h1>Amazon 8560 错误：SKU 创建失败或缺少关键信息</h1>
+        <p class="lead">8560 是一个阻断类错误。亚马逊无法根据当前表格行创建 SKU，通常与商品编码、分类、标题、品牌或 GTIN 豁免有关。</p>
+      </section>
+      <section class="article-card">
+        <h2>优先检查字段</h2>
+        <p><code>sku</code>、<code>product_type</code>、<code>item_name</code>、<code>brand</code>、<code>external_product_id</code>、<code>external_product_id_type</code>。</p>
+      </section>
+      <section class="article-card">
+        <h2>修复步骤</h2>
+        <ol>
+          <li>确认 SKU 不是空值，也没有重复或不可见字符。</li>
+          <li>检查商品编码类型和值是否匹配，例如 UPC、EAN、ASIN。</li>
+          <li>如果商品没有编码，确认对应品牌和分类是否已获得 GTIN 豁免。</li>
+          <li>用 1 个 SKU 做最小上传文件，确认核心字段能通过后再批量扩展。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

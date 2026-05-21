@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 90244 错误怎么解决 | 变体父子关系修复指南</title>
+    <meta name="description" content="Amazon 90244 错误常见于 Flat File 变体上传，父体、子体、parent_sku、relationship_type 或 variation_theme 不一致。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-90244" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="./amazon-error-99010.html">99010 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Error 90244</p>
+        <h1>Amazon 90244 错误：变体父子关系字段不一致</h1>
+        <p class="lead">90244 多数出现在父子体表格中，常见原因是 parentage、parent_sku、relationship_type、variation_theme 或变体属性没有对齐。</p>
+      </section>
+      <section class="article-card">
+        <h2>优先检查字段</h2>
+        <p><code>parentage</code>、<code>parent_sku</code>、<code>relationship_type</code>、<code>variation_theme</code>、<code>color_name</code>、<code>size_name</code>。</p>
+      </section>
+      <section class="article-card">
+        <h2>修复步骤</h2>
+        <ol>
+          <li>父体行 <code>parentage</code> 应为 parent，子体行应为 child。</li>
+          <li>所有子体的 <code>parent_sku</code> 必须指向同一个父体 SKU。</li>
+          <li>父体和子体的 <code>variation_theme</code> 保持一致。</li>
+          <li>每个子体必须填写变体属性，且组合不能重复。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

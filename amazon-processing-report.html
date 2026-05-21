@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Processing Report 怎么看 | Flat File 处理报告中文指南</title>
+    <meta name="description" content="Amazon Flat File 上传后如何阅读 Processing Report？了解 error-code、error-message、SKU、原始行号和字段名的含义。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-processing-report" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="./amazon-error-8541.html">8541 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Processing Report</p>
+        <h1>Amazon Processing Report 中文阅读指南</h1>
+        <p class="lead">Processing Report 是 Flat File 上传后的处理报告。它告诉你哪些 SKU 失败、失败行号、错误代码、错误信息和相关字段。</p>
+      </section>
+      <section class="article-card">
+        <h2>重点字段</h2>
+        <ul>
+          <li><code>sku</code>：受影响的卖家 SKU。</li>
+          <li><code>error-code</code>：亚马逊返回的错误代码，例如 8541、99010、90244。</li>
+          <li><code>error-message</code>：英文错误描述。</li>
+          <li><code>attribute-name</code>：可能需要修改的字段名。</li>
+          <li><code>original-record-number</code>：原始上传文件里的行号。</li>
+        </ul>
+      </section>
+      <section class="article-card">
+        <h2>建议处理流程</h2>
+        <ol>
+          <li>先按错误码分组，找出影响最多 SKU 的错误。</li>
+          <li>优先修复 8541、8560、90244 这类阻断问题。</li>
+          <li>再处理 99010 缺字段和 90112 字段值不合法。</li>
+          <li>最后修复图片链接、长度、格式等可批量处理的问题。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

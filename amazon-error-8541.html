@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon 8541 错误怎么解决 | ASIN 信息冲突修复指南</title>
+    <meta name="description" content="Amazon Flat File 上传报错 8541 通常表示商品编码与亚马逊目录中的 ASIN 信息冲突。查看中文原因、检查字段和修复步骤。" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://amazon-flat-file-diagnoser.vercel.app/amazon-error-8541" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">AF</span>
+        <div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div>
+      </a>
+      <nav class="top-actions"><a href="./amazon-processing-report.html">Processing Report 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Error 8541</p>
+        <h1>Amazon 8541 错误：商品编码与现有 ASIN 信息冲突</h1>
+        <p class="lead">8541 常见于 UPC/EAN/ASIN 已经匹配到目录商品，但你上传的品牌、标题、制造商、颜色、尺寸等属性与目录记录不一致。</p>
+      </section>
+      <section class="article-card">
+        <h2>优先检查字段</h2>
+        <p><code>external_product_id</code>、<code>external_product_id_type</code>、<code>brand</code>、<code>item_name</code>、<code>manufacturer</code>、颜色和尺寸字段。</p>
+      </section>
+      <section class="article-card">
+        <h2>修复步骤</h2>
+        <ol>
+          <li>确认这个 SKU 是要匹配已有 ASIN，还是创建全新 ASIN。</li>
+          <li>检查 UPC/EAN 是否填错，尤其是复制表格时残留的旧编码。</li>
+          <li>对比目录 ASIN 页面上的品牌、标题、制造商、型号、颜色、尺寸。</li>
+          <li>如果目录信息错误，准备包装图、品牌授权或官网链接后联系 Seller Support。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

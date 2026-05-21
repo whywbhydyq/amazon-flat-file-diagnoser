@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://demo-project2-three.vercel.app/sitemap.xml
+Sitemap: https://amazon-flat-file-diagnoser.vercel.app/sitemap.xml
