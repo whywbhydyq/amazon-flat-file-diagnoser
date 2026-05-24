@@ -37,7 +37,7 @@ try {
   }
 
   if (latestMainSha === currentSha) {
-    continueBuild(`Current comit ${currentSha} is latest ${targetRef}`);
+    continueBuild(`Current commit ${currentSha} is latest ${targetRef}`);
   }
 
   skipBuild(`Current commit ${currentSha} is not latest ${targetRef} ${latestMainSha}`);
