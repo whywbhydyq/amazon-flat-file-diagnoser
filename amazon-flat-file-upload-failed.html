@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Flat File 上传失败怎么办 | 批量上传错误排查流程</title>
-    <meta name="description" content="Amazon Flat File 上传失败后，先下载 Processing Report，再按错误码、SKU、行号和字段名定位问题。查看完整排查流程。" />
+    <title>Amazon Flat File Upload Failed | Processing Report Fix Flow</title>
+    <meta name="description" content="When an Amazon Flat File upload fails, download the Processing Report, group errors by code, SKU, row, and field, then fix the original template before re-uploading." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-flat-file-upload-failed" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-flat-file-upload-failed" />
-    <meta property="og:title" content="Amazon Flat File 上传失败怎么办 | 批量上传错误排查流程" />
-    <meta property="og:description" content="Amazon Flat File 上传失败后，先下载 Processing Report，再按错误码、SKU、行号和字段名定位问题。查看完整排查流程。" />
+    <meta property="og:title" content="Amazon Flat File Upload Failed | Processing Report Fix Flow" />
+    <meta property="og:description" content="When an Amazon Flat File upload fails, download the Processing Report, group errors by code, SKU, row, and field, then fix the original template before re-uploading." />
     <meta property="og:site_name" content="Amazon Flat File Error Checker" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Flat File 上传失败后的排查流程","description":"Amazon Flat File 上传失败后，先下载 Processing Report，再按错误码、SKU、行号和字段名定位问题。查看完整排查流程。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-21","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-flat-file-upload-failed","author":{"@type":"Organization","name":"YmirTool"}}
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Flat File 上传失败后的排查流程","description":"When an Amazon Flat File upload fails, download the Processing Report, group errors by code, SKU, row, and field, then fix the original template before re-uploading.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-flat-file-upload-failed","author":{"@type":"Organization","name":"YmirTool"}}
     </script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Flat File 上传失败后的排查流程","item":"https://flatfile.ymirtool.com/amazon-flat-file-upload-failed"}]}
@@ -22,23 +22,72 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-feed-error-codes">错误码总览</a><a href="/amazon-flat-file-upload-failed">上传失败排查</a><a href="/">上传报告</a></nav>
+    </header>
     <main class="article-shell">
-      <section class="article-hero"><p class="eyebrow">Upload Failed</p><h1>Amazon Flat File 上传失败后的排查流程</h1><p class="lead">批量上传失败后，不要立刻重传完整文件。先看 Processing Report，找到错误码、原始行号和字段名。</p></section>
-      <p class="article-meta">Updated: 2026-05-21 - Independent seller utility, not affiliated with Amazon.</p>
-      <section class="article-card"><h2>三步定位</h2><ol><li>下载 Processing Report，确认是否有 error-code 和 error-message。</li><li>按错误码分组，先处理影响 SKU 最多的问题。</li><li>回到原始模板按 original-record-number 定位行号。</li></ol></section>
-      <section class="article-card"><h2>先修哪些错误</h2><p>优先处理 8541、8560、90244、99010，因为它们通常会阻断 SKU 创建或变体建立。图片、长度、格式类问题可以第二批处理。</p><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+      <section class="article-hero">
+        <p class="eyebrow">Upload Failed</p>
+        <h1>Amazon Flat File 上传失败后的排查流程</h1>
+        <p class="lead">批量上传失败后，不要立刻重传完整文件。先下载 Processing Report，按错误码、SKU、原始行号和字段名定位问题。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
 
+      <section class="article-card">
+        <h2>不要立刻重传，先做这 5 步</h2>
+        <ol class="steps">
+          <li><strong>下载 Processing Report。</strong><span>先确认失败记录、成功记录和错误总数，不要只看 Seller Central 页面上的红色状态。</span></li>
+          <li><strong>按错误码分组。</strong><span>找出影响最多 SKU 的错误码，通常先修 8541、8560、99010、90244、8036。</span></li>
+          <li><strong>按字段分组。</strong><span>如果多个 SKU 指向同一个字段，优先修模板列名、Valid Values 或条件必填组。</span></li>
+          <li><strong>回原始行号修复。</strong><span>用 <code>original-record-number</code> 回到原始文件，不要在处理报告里直接改。</span></li>
+          <li><strong>小批量复传。</strong><span>先用 1-5 个 SKU 验证修复方向，再批量上传整份文件。</span></li>
+        </ol>
+      </section>
+      <section class="article-card">
+        <h2>上传失败排查树</h2>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>现象</th><th>优先判断</th><th>下一步</th></tr></thead><tbody>
+          <tr><td>所有 SKU 都失败</td><td>模板站点、类目、文件格式或必填字段组可能错误</td><td>检查模板来源、Data Definitions、Required 字段和保存格式。</td></tr>
+          <tr><td>某个父子体组失败</td><td>parentage、parent_sku、relationship_type、variation_theme 不一致</td><td>先看 <a href="/amazon-parent-child-variation-error">父子体关系指南</a>。</td></tr>
+          <tr><td>同一字段大量失败</td><td>字段值不在允许列表，或列名/枚举值不匹配</td><td>按字段分组，核对 Valid Values。</td></tr>
+          <tr><td>少数 SKU 失败</td><td>商品编码、目录状态、ASIN 匹配或媒体 URL 个别问题</td><td>按 SKU 分组，逐个核对报告 message。</td></tr>
+        </tbody></table></div>
+      </section>
+      <section class="article-card">
+        <h2>示例报告行</h2>
+        <pre class="example-code">original-record-number	sku	error-code	error-type	error-message	attribute-name
+57	PARENT-MUG-BLK	99010	Error	A value is missing from one or more required columns from this group: [variation_theme = null].	variation_theme
+64	MUG-BLK-12	90244	Error	We can't accept the Count you entered for Unit Count.	unit_count
+77	MUG-BLK-IMG	20000	Error	We could not access the media at URL https://example.com/image.jpg.	main_image_url</pre>
+      </section>
+      <section class="article-card">
+        <h2>重新上传前 checklist</h2>
+        <ul>
+          <li>是否使用目标站点、目标类目的最新模板。</li>
+          <li>是否保留原始列头，未删除 Data Definition 要求的必填列。</li>
+          <li>父体和子体是否使用同一个 variation_theme。</li>
+          <li>所有子体是否有唯一的商品编码、价格、库存和变体属性组合。</li>
+          <li>枚举字段是否来自 Valid Values，而不是手动翻译或复制旧值。</li>
+          <li>图片 URL 是否可公网访问，且不是登录后才可访问。</li>
+        </ul>
+        <div class="article-cta"><a class="primary-link" href="/">上传 Processing Report 自动诊断</a><a class="secondary-link" href="/amazon-inventory-file-template">检查模板填写</a></div>
+      </section>
+      <section class="article-card"><h2>边界说明</h2><p class="rule-source">本页用于上传后排错，不保证 Seller Central 一定接受修改后的文件。最终通过状态取决于站点、类目、品牌权限、账号权限、模板版本和 Amazon 当前目录规则。</p></section>
+      
       <section class="article-card related-guides">
         <h2>相关 Amazon Flat File 指南</h2>
         <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
         <div class="guide-grid">
-          <a href="./index.html">Amazon Flat File Error Checker</a>
-          <a href="./amazon-feed-error-codes.html">Amazon Feed Error Codes 中文总览</a>
-          <a href="./amazon-processing-report.html">Processing Report 中文阅读指南</a>
-          <a href="./amazon-flat-file-upload-failed.html">Flat File 上传失败排查流程</a>
+          <a href="/">Amazon Processing Report Error Checker</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+          <a href="/amazon-inventory-file-template">Inventory File Template 填写指南</a>
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-parent-child-variation-error">Parent Child Variation</a><a href="/amazon-error-8560">8560 SKU Creation Failed</a>
         </div>
       </section>
+
     </main>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>

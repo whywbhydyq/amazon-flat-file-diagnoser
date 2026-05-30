@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon 8560 错误怎么解决 | SKU 创建失败修复指南</title>
-    <meta name="description" content="Amazon 8560 错误表示 SKU 无法创建或更新，常见原因包括商品编码、分类、标题、品牌或 GTIN 豁免信息缺失。" />
+    <title>Amazon Error 8560 Fix | SKU Creation Failed</title>
+    <meta name="description" content="Fix Amazon error 8560 by checking SKU creation requirements, product type, item name, brand, product ID, GTIN exemption, and processing report rows." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-error-8560" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-error-8560" />
-    <meta property="og:title" content="Amazon 8560 错误怎么解决 | SKU 创建失败修复指南" />
-    <meta property="og:description" content="Amazon 8560 错误表示 SKU 无法创建或更新，常见原因包括商品编码、分类、标题、品牌或 GTIN 豁免信息缺失。" />
+    <meta property="og:title" content="Amazon 8560 错误：SKU 创建失败或缺少关键信息 | Processing Report 修复指南" />
+    <meta property="og:description" content="Fix Amazon error 8560 by checking SKU creation requirements, product type, item name, brand, product ID, GTIN exemption, and processing report rows." />
     <meta property="og:site_name" content="Amazon Flat File Error Checker" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 8560 错误：SKU 创建失败或缺少关键信息","description":"Amazon 8560 错误表示 SKU 无法创建或更新，常见原因包括商品编码、分类、标题、品牌或 GTIN 豁免信息缺失。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-21","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-8560","author":{"@type":"Organization","name":"YmirTool"}}
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 8560 错误：SKU 创建失败或缺少关键信息","description":"Fix Amazon error 8560 by checking SKU creation requirements, product type, item name, brand, product ID, GTIN exemption, and processing report rows.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-8560","author":{"@type":"Organization","name":"YmirTool"}}
     </script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 8560 错误：SKU 创建失败或缺少关键信息","item":"https://flatfile.ymirtool.com/amazon-error-8560"}]}
@@ -23,16 +23,16 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
-      <nav class="top-actions"><a href="./amazon-error-90244.html">90244 指南</a><a href="./index.html#feedback">反馈错误码</a></nav>
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-error-90244">90244 指南</a><a href="/#feedback">反馈错误码</a></nav>
     </header>
     <main class="article-shell">
       <section class="article-hero">
         <p class="eyebrow">Error 8560</p>
         <h1>Amazon 8560 错误：SKU 创建失败或缺少关键信息</h1>
-        <p class="lead">8560 是一个阻断类错误。亚马逊无法根据当前表格行创建 SKU，通常与商品编码、分类、标题、品牌或 GTIN 豁免有关。</p>
+        <p class="lead">8560 通常表示亚马逊无法用当前行创建 SKU，常见原因是 product_type、标题、品牌、商品编码、分类或 GTIN 豁免状态不完整。</p>
       </section>
-      <p class="article-meta">Updated: 2026-05-21 - Independent seller utility, not affiliated with Amazon.</p>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
       <section class="article-card">
         <h2>优先检查字段</h2>
         <p><code>sku</code>、<code>product_type</code>、<code>item_name</code>、<code>brand</code>、<code>external_product_id</code>、<code>external_product_id_type</code>。</p>
@@ -45,17 +45,46 @@
           <li>如果商品没有编码，确认对应品牌和分类是否已获得 GTIN 豁免。</li>
           <li>用 1 个 SKU 做最小上传文件，确认核心字段能通过后再批量扩展。</li>
         </ol>
-        <div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div>
+        <div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a></div>
+      </section>
+
+
+      <section class="article-card diagnostic-depth">
+        <h2>Processing Report 示例行</h2>
+        <p>下面是假设示例，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-NEW-010</td><td>8560</td><td>product_type</td><td>18</td><td>SKU could not be created because required product information is missing.</td></tr></tbody></table></div>
+        <h3>修复前后示例</h3>
+        <pre class="example-code"><code>Before: sku=SKU-NEW-010, product_type=, item_name=Example item, external_product_id=
+After:  sku=SKU-NEW-010, product_type=water_bottle, item_name=Example Brand Bottle, external_product_id=012345678905</code></pre>
+      </section>
+
+      <section class="article-card field-table-card">
+        <h2>字段定位表</h2>
+        <p>先用 Processing Report 的 <code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>sku</code></td><td>确认 SKU 唯一且没有不可见字符</td><td>不要重复使用旧 SKU 或包含多余空格</td></tr><tr><td><code>product_type</code></td><td>必须与当前分类模板一致</td><td>不要把其它站点或其它分类模板混用</td></tr><tr><td><code>external_product_id</code></td><td>商品编码和值类型必须匹配</td><td>UPC/EAN/ASIN 类型错误会导致创建失败</td></tr><tr><td><code>item_name / brand</code></td><td>创建新 SKU 的基础属性</td><td>先用最少字段复现，再逐步补充图片和卖点</td></tr></tbody></table></div>
+        <h3>重新上传前 checklist</h3>
+        <ul>
+          <li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
+          <li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
+          <li>保存为制表符分隔文本或 Seller Central 要求的格式后再上传。</li>
+          <li>重新上传后下载新的 Processing Report，确认同一字段不再报错。</li>
+        </ul>
+      </section>
+
+      <section class="article-card source-card">
+        <h2>规则来源与最终确认</h2>
+        <p>本页诊断依据：<a href="https://sellercentral.amazon.com/help/hub/reference/external/G200692370" target="_blank" rel="noopener">Amazon Seller Central Help</a>。如果 Processing Report 中的原始错误信息与本页示例不一致，应优先相信你自己的报告和当前分类模板。</p>
+        <div class="article-cta"><a href="/amazon-error-99010">99010 缺少必填字段</a><a href="/amazon-error-8036">8036 变体关系创建受限</a><a href="/amazon-flat-file-upload-failed">上传失败排查流程</a><a class="primary-link" href="/">上传报告自动分组</a></div>
       </section>
 
       <section class="article-card related-guides">
         <h2>相关 Amazon Flat File 指南</h2>
         <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
         <div class="guide-grid">
-          <a href="./index.html">Amazon Flat File Error Checker</a>
-          <a href="./amazon-feed-error-codes.html">Amazon Feed Error Codes 中文总览</a>
-          <a href="./amazon-processing-report.html">Processing Report 中文阅读指南</a>
-          <a href="./amazon-flat-file-upload-failed.html">Flat File 上传失败排查流程</a>
+          <a href="/">Amazon Flat File Error Checker</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
         </div>
       </section>
     </main>

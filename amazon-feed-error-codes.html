@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Feed Error Codes 中文总览 | Flat File 错误码表</title>
-    <meta name="description" content="Amazon Feed Error Codes 中文总览，覆盖 8541、99010、90244、8560、8036、8008、13013、8058、90112、20000 等 Flat File 错误。" />
+    <title>Amazon Feed Error Codes List | Flat File Upload Errors</title>
+    <meta name="description" content="Browse Amazon Flat File error codes including 8541, 8560, 99010, 90244, 8036, 8008, 8058, 90112, 13013, and 20000 with fields to check." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-feed-error-codes" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-feed-error-codes" />
-    <meta property="og:title" content="Amazon Feed Error Codes 中文总览 | Flat File 错误码表" />
-    <meta property="og:description" content="Amazon Feed Error Codes 中文总览，覆盖 8541、99010、90244、8560、8036、8008、13013、8058、90112、20000 等 Flat File 错误。" />
+    <meta property="og:title" content="Amazon Feed Error Codes List | Flat File Upload Errors" />
+    <meta property="og:description" content="Browse Amazon Flat File error codes including 8541, 8560, 99010, 90244, 8036, 8008, 8058, 90112, 13013, and 20000 with fields to check." />
     <meta property="og:site_name" content="Amazon Flat File Error Checker" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Feed Error Codes 中文总览","description":"Amazon Feed Error Codes 中文总览，覆盖 8541、99010、90244、8560、8036、8008、13013、8058、90112、20000 等 Flat File 错误。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-21","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-feed-error-codes","author":{"@type":"Organization","name":"YmirTool"}}
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Feed Error Codes 中文总览","description":"Browse Amazon Flat File error codes including 8541, 8560, 99010, 90244, 8036, 8008, 8058, 90112, 13013, and 20000 with fields to check.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-feed-error-codes","author":{"@type":"Organization","name":"YmirTool"}}
     </script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Feed Error Codes 中文总览","item":"https://flatfile.ymirtool.com/amazon-feed-error-codes"}]}
@@ -22,23 +22,70 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-feed-error-codes">错误码总览</a><a href="/amazon-flat-file-upload-failed">上传失败排查</a><a href="/">上传报告</a></nav>
+    </header>
     <main class="article-shell">
-      <section class="article-hero"><p class="eyebrow">Error Codes</p><h1>Amazon Feed Error Codes 中文总览</h1><p class="lead">先按错误码判断问题类型，再回到 SKU、行号和字段名修复。不要只看英文 message 的最后一句。</p></section>
-      <p class="article-meta">Updated: 2026-05-21 - Independent seller utility, not affiliated with Amazon.</p>
-      <section class="article-card"><h2>高优先级错误</h2><ul><li><a href="./amazon-error-8541.html">8541</a>：目录 ASIN 信息冲突。</li><li><a href="./amazon-error-8560.html">8560</a>：SKU 创建失败。</li><li><a href="./amazon-error-90244.html">90244</a>：父子体变体关系错误。</li><li><a href="./amazon-error-99010.html">99010</a>：缺少必填字段。</li></ul></section>
-      <section class="article-card"><h2>处理中低优先级错误</h2><ul><li><a href="./amazon-error-8036.html">8036</a>：商品编码无效。</li><li><a href="./amazon-error-90112.html">90112</a>：字段值不被接受。</li><li><a href="./amazon-error-13013.html">13013</a>：图片 URL 问题。</li><li><a href="./amazon-error-8008.html">8008</a>：字段长度或格式错误。</li></ul><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+      <section class="article-hero">
+        <p class="eyebrow">Error Codes</p>
+        <h1>Amazon Feed Error Codes 中文总览</h1>
+        <p class="lead">先按错误码判断问题类型，再结合 SKU、原始行号、字段名和错误消息决定怎么修。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
 
+      <section class="article-card">
+        <h2>先用错误码判断问题类型</h2>
+        <p>错误码不是最终答案，但能决定排查顺序。更准确的做法是把 <code>error-code</code>、<code>error-message</code>、<code>attribute-name</code> 和 SKU 放在一起看。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>错误码</th><th>常见含义</th><th>优先检查字段</th><th>指南</th></tr></thead><tbody>
+          <tr><td><code>8541</code></td><td>提交属性与现有 ASIN 目录信息冲突</td><td>brand、title、UPC/EAN、color、size</td><td><a href="/amazon-error-8541">8541 指南</a></td></tr>
+          <tr><td><code>8560</code></td><td>SKU 创建失败，常见于模板、字段或商品编码问题</td><td>sku、product_type、external_product_id、required fields</td><td><a href="/amazon-error-8560">8560 指南</a></td></tr>
+          <tr><td><code>99010</code></td><td>必填字段组缺值或冲突</td><td>variation_theme、parent_child、relationship_type、类目必填组</td><td><a href="/amazon-error-99010">99010 指南</a></td></tr>
+          <tr><td><code>90244</code></td><td>属性值不是该类目允许值</td><td>color_name、size_name、unit_count、variation attributes</td><td><a href="/amazon-error-90244">90244 指南</a></td></tr>
+          <tr><td><code>8036</code></td><td>变体关系创建受限或不被接受</td><td>parent_sku、parentage、relationship_type、variation_theme</td><td><a href="/amazon-error-8036">8036 指南</a></td></tr>
+          <tr><td><code>8008</code></td><td>relationship feed 引用的 child SKU 无法识别</td><td>child SKU、update sequence、parent_sku</td><td><a href="/amazon-error-8008">8008 指南</a></td></tr>
+          <tr><td><code>8058</code></td><td>必填字段缺失或字段值无效</td><td>required fields、valid values、template type</td><td><a href="/amazon-error-8058">8058 指南</a></td></tr>
+          <tr><td><code>90112</code></td><td>字段值、日期、数值、必填项或格式校验失败</td><td>date、price、quantity、seller_sku、枚举字段</td><td><a href="/amazon-error-90112">90112 指南</a></td></tr>
+          <tr><td><code>13013</code></td><td>SKU 不在目录中或已被删除</td><td>sku、ASIN、product-id、update_delete</td><td><a href="/amazon-error-13013">13013 指南</a></td></tr>
+          <tr><td><code>20000</code></td><td>图片或媒体 URL 无法访问</td><td>main_image_url、other_image_url、SSL、DNS、robots</td><td><a href="/amazon-error-20000">20000 指南</a></td></tr>
+        </tbody></table></div>
+      </section>
+      <section class="article-card">
+        <h2>错误码分组后怎么处理</h2>
+        <ol class="steps">
+          <li><strong>阻断类先修。</strong><span>8541、8560、8036、99010、90244 常会阻断 SKU 创建、ASIN 匹配或变体关系。</span></li>
+          <li><strong>字段类批量修。</strong><span>8058、90112、90244 往往能按 <code>attribute-name</code> 批量定位，不要逐个 SKU 手改。</span></li>
+          <li><strong>依赖顺序单独看。</strong><span>8008、13013 可能和 SKU 是否已创建、父子体上传顺序或目录状态有关。</span></li>
+          <li><strong>资源类最后复测。</strong><span>20000 这类图片/媒体 URL 问题需要确认 URL 公网可访问、HTTPS 和服务器响应。</span></li>
+        </ol>
+      </section>
+      <section class="article-card">
+        <h2>示例：同一个错误码也要看字段</h2>
+        <pre class="example-code">original-record-number	sku	error-code	error-message	attribute-name
+84	CUP-BLK-12	90244	We can't accept the Count you entered for Unit Count.	unit_count
+91	TEE-RED-M	90244	We can't accept the Color you entered for Color.	color_name</pre>
+        <p>两行都是 90244，但一个要回 Valid Values 检查 <code>unit_count</code>，另一个要修 <code>color_name</code>。这就是首页工具需要“按字段”分组的原因。</p>
+        <div class="article-cta"><a class="primary-link" href="/">上传报告自动分组</a><a class="secondary-link" href="/amazon-processing-report">先看报告字段</a></div>
+      </section>
+      <section class="article-card">
+        <h2>来源与边界</h2>
+        <p class="rule-source">部分错误码有 Amazon Seller Central 官方帮助页；部分错误仍需要结合 Processing Report 的 message、attribute-name、站点、类目和账号权限确认。本页是 independent helper，不是 Amazon 官方错误码库。</p>
+      </section>
+      
       <section class="article-card related-guides">
         <h2>相关 Amazon Flat File 指南</h2>
         <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
         <div class="guide-grid">
-          <a href="./index.html">Amazon Flat File Error Checker</a>
-          <a href="./amazon-feed-error-codes.html">Amazon Feed Error Codes 中文总览</a>
-          <a href="./amazon-processing-report.html">Processing Report 中文阅读指南</a>
-          <a href="./amazon-flat-file-upload-failed.html">Flat File 上传失败排查流程</a>
+          <a href="/">Amazon Processing Report Error Checker</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+          <a href="/amazon-inventory-file-template">Inventory File Template 填写指南</a>
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-error-8541">8541 ASIN Conflict</a><a href="/amazon-error-99010">99010 Required Fields</a><a href="/amazon-error-90244">90244 Valid Values</a>
         </div>
       </section>
+
     </main>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>

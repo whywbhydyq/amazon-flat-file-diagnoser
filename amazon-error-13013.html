@@ -3,40 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon 13013 错误怎么解决 | 图片 URL 无法访问</title>
-    <meta name="description" content="Amazon Flat File 报错 13013 通常与主图或附图 URL 无法访问、图片格式不支持、链接需要权限或重定向异常有关。" />
+    <title>Amazon Error 13013 Fix | SKU Not in Catalog or Deleted</title>
+    <meta name="description" content="Fix Amazon error 13013 by checking whether the SKU exists in your catalog, whether the product was deleted, and whether the product ID, SKU, and upload action match the current listing state." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-error-13013" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-error-13013" />
-    <meta property="og:title" content="Amazon 13013 错误怎么解决 | 图片 URL 无法访问" />
-    <meta property="og:description" content="Amazon Flat File 报错 13013 通常与主图或附图 URL 无法访问、图片格式不支持、链接需要权限或重定向异常有关。" />
+    <meta property="og:title" content="Amazon 13013 错误：SKU 不在目录中或已被删除 | Processing Report 修复指南" />
+    <meta property="og:description" content="Fix Amazon error 13013 by checking whether the SKU exists in your catalog, whether the product was deleted, and whether the product ID, SKU, and upload action match the current listing state." />
     <meta property="og:site_name" content="Amazon Flat File Error Checker" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 13013 错误：图片或图片链接问题","description":"Amazon Flat File 报错 13013 通常与主图或附图 URL 无法访问、图片格式不支持、链接需要权限或重定向异常有关。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-21","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-13013","author":{"@type":"Organization","name":"YmirTool"}}
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 13013 错误：SKU 不在目录中或已被删除","description":"Fix Amazon error 13013 by checking whether the SKU exists in your catalog, whether the product was deleted, and whether the product ID, SKU, and upload action match the current listing state.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-13013","author":{"@type":"Organization","name":"YmirTool"}}
     </script>
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 13013 错误：图片或图片链接问题","item":"https://flatfile.ymirtool.com/amazon-error-13013"}]}
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 13013 错误：SKU 不在目录中或已被删除","item":"https://flatfile.ymirtool.com/amazon-error-13013"}]}
     </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
     <main class="article-shell">
-      <section class="article-hero"><p class="eyebrow">Error 13013</p><h1>Amazon 13013 错误：图片或图片链接问题</h1><p class="lead">13013 通常说明亚马逊抓取不到图片，或者图片 URL、格式、尺寸、主图规范不符合要求。</p></section>
-      <p class="article-meta">Updated: 2026-05-21 - Independent seller utility, not affiliated with Amazon.</p>
-      <section class="article-card"><h2>优先检查字段</h2><p><code>main_image_url</code>、<code>other_image_url1</code>、<code>other_image_url2</code>、<code>swatch_image_url</code>。</p></section>
-      <section class="article-card"><h2>修复步骤</h2><ol><li>在无登录窗口打开图片 URL，确认可以直接访问。</li><li>使用稳定的 HTTPS 图片链接，不要用网盘、短链或需要 Cookie 的链接。</li><li>确认文件格式为 JPG、PNG 等常规格式。</li><li>主图尽量白底、清晰、无边框水印，避免被二次拒绝。</li></ol><div class="article-cta"><a class="primary-link" href="./index.html">上传报告自动诊断</a></div></section>
+      <section class="article-hero"><p class="eyebrow">Error 13013</p><h1>Amazon 13013 错误：SKU 不在目录中或已被删除</h1><p class="lead">13013 不是图片链接错误。它通常表示这条记录引用的 SKU 或商品无法作为当前目录商品处理：SKU 可能尚未成功创建、已被删除、跨站点本地化未完成，或 product-id / ASIN / SKU 关系不一致。</p></section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+      <section class="article-card"><h2>优先检查字段</h2><p><code>sku</code>、<code>external_product_id</code>、<code>product-id</code>、<code>product-id-type</code>、<code>update_delete</code>。</p></section>
+      <section class="article-card"><h2>修复步骤</h2><ol><li>在 Manage Inventory 中搜索该 SKU，确认它是否存在、是否被删除、是否属于当前 marketplace。</li><li>如果你是在更新已有 SKU，确认 <code>update_delete</code> 不是在更新一个不存在或已删除的 SKU。</li><li>如果你是在创建新 listing，检查 product-id、product-id-type、brand、item_name 等建品字段是否足以创建商品。</li><li>跨 marketplace 复制商品时，等待商品本地化完成后再重新上传。</li></ol><div class="article-cta"><a class="primary-link" href="/">上传 Processing Report 自动分组</a></div></section>
+
+      <section class="article-card diagnostic-depth">
+        <h2>Processing Report 示例行</h2>
+        <p>下面是假设示例，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-CAT-004</td><td>13013</td><td>sku</td><td>21</td><td>Your SKU cannot be added because the product is not in the catalog or has been deleted.</td></tr></tbody></table></div>
+        <h3>修复前后示例</h3>
+        <pre class="example-code"><code>Before: sku=SKU-CAT-004, update_delete=Update, product-id=B0EXAMPLE123
+After:  confirm SKU exists in Manage Inventory, or switch to a valid create/update workflow with matching product-id and required listing fields</code></pre>
+      </section>
+
+      <section class="article-card field-table-card">
+        <h2>字段定位表</h2>
+        <p>先用 Processing Report 的 <code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>sku</code></td><td>SKU 是否已在当前 Seller Central 账号和 marketplace 中存在</td><td>先在 Manage Inventory 搜索；删除过的 SKU 不要直接按已有 SKU 更新</td></tr><tr><td><code>external_product_id / product-id</code></td><td>ASIN、UPC、EAN 或其它商品编码是否指向正确商品</td><td>确认编码没有复制错，也没有和其它 SKU 的商品关系混用</td></tr><tr><td><code>product-id-type</code></td><td>编码类型是否与编码值匹配</td><td>ASIN/UPC/EAN/JAN 不要混填</td></tr><tr><td><code>update_delete</code></td><td>上传动作是否适合当前 SKU 状态</td><td>不存在的 SKU 不要执行 Update；删除过的 SKU 先确认能否重新创建</td></tr></tbody></table></div>
+        <h3>重新上传前 checklist</h3>
+        <ul>
+          <li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
+          <li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
+          <li>保存为制表符分隔文本或 Seller Central 要求的格式后再上传。</li>
+          <li>重新上传后下载新的 Processing Report，确认同一字段或错误码不再出现。</li>
+        </ul>
+      </section>
+
+      <section class="article-card source-card">
+        <h2>规则来源与最终确认</h2>
+        <p>本页规则依据 Amazon Seller Central Error 13013 官方帮助页：SKU 不能添加，因为商品不在目录中或已被删除。 如果 Processing Report 中的原始错误信息与本页示例不一致，应优先相信你自己的报告和当前分类模板。</p>
+        <div class="article-cta"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G25001" target="_blank" rel="noopener">Amazon Seller Central Error 13013</a><a href="/amazon-error-20000">13013 与图片 URL 问题的区别</a><a href="/amazon-listing-upload-error">Listing 上传错误排查</a><a href="/amazon-feed-error-codes">Feed error codes 总览</a><a class="primary-link" href="/">上传报告自动分组</a></div>
+      </section>
 
       <section class="article-card related-guides">
         <h2>相关 Amazon Flat File 指南</h2>
         <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
         <div class="guide-grid">
-          <a href="./index.html">Amazon Flat File Error Checker</a>
-          <a href="./amazon-feed-error-codes.html">Amazon Feed Error Codes 中文总览</a>
-          <a href="./amazon-processing-report.html">Processing Report 中文阅读指南</a>
-          <a href="./amazon-flat-file-upload-failed.html">Flat File 上传失败排查流程</a>
+          <a href="/">Amazon Flat File Error Checker</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
         </div>
       </section>
     </main>

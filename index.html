@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Flat File Error Diagnoser | Processing Report Checker</title>
+    <title>Amazon Processing Report Error Checker | Flat File Fix List</title>
     <meta
       name="description"
-      content="Diagnose Amazon flat file processing report errors locally. Check SKU rows, error codes, required fields, parent-child variations, and common upload mistakes before re-upload."
+      content="Upload an Amazon Processing Report and group flat file errors by error code, SKU, row number, and field. Copy a fix checklist or export CSV before re-uploading."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Amazon Flat File Diagnoser" />
@@ -15,43 +15,45 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://flatfile.ymirtool.com/" />
     <link rel="manifest" href="./site.webmanifest" />
+    <link rel="icon" href="./icons/icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
     <meta name="theme-color" content="#0f766e" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://flatfile.ymirtool.com/" />
-    <meta property="og:title" content="Amazon Flat File Error Diagnoser" />
+    <meta property="og:title" content="Amazon Processing Report Error Checker" />
     <meta
       property="og:description"
-      content="上传 Amazon Processing Report，快速看懂错误码、SKU、行号和修复步骤。文件仅在浏览器本地解析。"
+      content="上传 Amazon Processing Report，按错误码、SKU、行号和字段生成中文修复清单。报告文件内容不上传。"
     />
     <meta property="og:site_name" content="Amazon Flat File 错误诊断器" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Amazon Flat File Error Diagnoser" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Amazon Processing Report Error Checker" />
     <meta
       name="twitter:description"
-      content="解析 Amazon Processing Report，生成中文修复清单和 Seller Support Case 话术。"
+      content="解析 Amazon Processing Report，按错误码、SKU、行号和字段生成中文修复清单。"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Amazon Flat File Error Diagnoser",
-        "alternateName": "Amazon Flat File 错误诊断器",
+        "name": "Amazon Processing Report Error Checker",
+        "alternateName": "Amazon Flat File Error Checker",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": "https://flatfile.ymirtool.com/",
         "inLanguage": "zh-CN",
-        "description": "浏览器本地解析 Amazon Flat File Processing Report，识别错误码、SKU、行号和字段，并生成中文修复步骤。",
+        "description": "解析 Amazon Flat File Processing Report，识别错误码、SKU、行号和字段，并生成中文修复步骤与导出清单。",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
         },
         "featureList": [
-          "Amazon Processing Report 本地解析",
+          "Amazon Processing Report error grouping",
           "错误码中文解释",
-          "SKU 和行号定位",
+          "SKU、行号和字段定位",
           "Seller Support Case 话术生成",
           "CSV 修复清单导出"
         ],
@@ -76,7 +78,7 @@
             "name": "这个工具会上传我的店铺文件吗？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "不会。当前版本在浏览器本地读取 txt、csv 或 tsv 报告，不把文件内容上传到服务器。"
+              "text": "不会。当前版本在浏览器中读取 txt、csv 或 tsv 报告，不把报告文件内容发送到本站服务器。"
             }
           },
           {
@@ -96,8 +98,8 @@
       <div class="brand">
         <span class="brand-mark">AF</span>
         <div>
-          <strong>Amazon Flat File 错误诊断器</strong>
-          <span>本地解析处理报告，不上传文件</span>
+          <strong>Amazon Processing Report Checker</strong>
+          <span>报告文件内容不上传</span>
         </div>
       </div>
       <nav class="top-actions" aria-label="页面导航">
@@ -111,14 +113,14 @@
       <section class="tool-hero" aria-labelledby="page-title">
         <div class="hero-copy">
           <p class="eyebrow">For Amazon sellers</p>
-          <h1 id="page-title">Amazon Flat File Error Checker：10 秒看懂该改哪一行</h1>
+          <h1 id="page-title">Amazon Processing Report Error Checker</h1>
           <p class="lead">
-            免费解析亚马逊批量上传后的 Processing Report，按错误码、SKU、行号分组，输出中文解释、修复字段、优先级和可复制的 Case 话术。
+            上传 Amazon 批量上传后的 Processing Report，按错误码、SKU、行号和字段分组，输出中文解释、修复字段、优先级、Case 话术和可导出的 fix list。
           </p>
           <div class="metric-strip" aria-label="工具能力">
-            <div><strong>10</strong><span>首批错误码</span></div>
-            <div><strong>0</strong><span>服务器上传</span></div>
-            <div><strong>3</strong><span>导出格式</span></div>
+            <div><strong>10</strong><span>高频错误码</span></div>
+            <div><strong>4</strong><span>结果分组视图</span></div>
+            <div><strong>2</strong><span>清单导出方式</span></div>
           </div>
         </div>
 
@@ -126,9 +128,9 @@
           <div id="dropzone" class="dropzone" tabindex="0">
             <input id="fileInput" type="file" accept=".txt,.csv,.tsv" />
             <div class="upload-icon" aria-hidden="true">+</div>
-            <h2>拖入报告或选择文件</h2>
-            <p>支持 .txt / .csv / .tsv。第一版先不解析 .xlsx。</p>
-            <button id="chooseFile" class="primary-button" type="button">选择 Processing Report</button>
+            <h2>上传 Processing Report</h2>
+            <p>支持 Seller Central 下载的 .txt / .csv / .tsv。第一版先不解析 .xlsx。</p>
+            <button id="chooseFile" class="primary-button" type="button">Upload Processing Report</button>
           </div>
           <div class="sample-row">
             <button id="loadSample" class="ghost-button" type="button">加载示例报告</button>
@@ -150,6 +152,7 @@
             <button class="tab-button active" type="button" data-view="code">按错误码</button>
             <button class="tab-button" type="button" data-view="sku">按 SKU</button>
             <button class="tab-button" type="button" data-view="row">按行号</button>
+            <button class="tab-button" type="button" data-view="field">按字段</button>
           </div>
           <div class="export-actions">
             <button id="copyMarkdown" class="secondary-button" type="button">复制修复清单</button>
@@ -163,7 +166,7 @@
       <section id="rules" class="content-band">
         <div class="section-heading">
           <p class="eyebrow">Rule Library</p>
-          <h2>第一版支持的高频错误码</h2>
+          <h2>支持的 Amazon Feed 错误码与规则来源</h2>
         </div>
         <div id="ruleGrid" class="rule-grid"></div>
       </section>
@@ -189,7 +192,7 @@
         <ol class="steps">
           <li>
             <strong>先处理高风险错误</strong>
-            <span>例如 ASIN 冲突、变体关系错误、商品编码无效，这类会阻断 SKU 创建或更新。</span>
+            <span>例如 ASIN 冲突、变体关系错误、变体关系限制，这类可能阻断父子体创建或更新。</span>
           </li>
           <li>
             <strong>再补必填字段</strong>
@@ -208,7 +211,7 @@
           <h2>隐私说明</h2>
         </div>
         <p>
-          当前版本只在浏览器本地读取文件内容，不会把报告上传到服务器。刷新页面后，解析结果会被清空。
+          当前版本只在浏览器中读取报告文件内容，不会把你的 Processing Report 发送到本站服务器。页面可能加载广告和统计脚本；这些脚本不接收你的报告文件内容。刷新页面后，解析结果会被清空。
         </p>
       </section>
 
@@ -241,12 +244,12 @@
         <a href="/amazon-error-99010">Amazon 99010 错误：缺少必填字段</a>
         <a href="/amazon-error-90244">Amazon 90244 错误：变体关系错误</a>
         <a href="/amazon-error-8560">Amazon 8560 错误：SKU 创建失败</a>
-        <a href="/amazon-error-8036">Amazon 8036 错误：商品编码无效</a>
-        <a href="/amazon-error-8008">Amazon 8008 错误：字段长度或格式错误</a>
-        <a href="/amazon-error-13013">Amazon 13013 错误：图片链接问题</a>
-        <a href="/amazon-error-8058">Amazon 8058 错误：品牌或分类冲突</a>
-        <a href="/amazon-error-90112">Amazon 90112 错误：字段值不被接受</a>
-        <a href="/amazon-error-20000">Amazon 20000 错误：通用处理失败</a>
+        <a href="/amazon-error-8036">Amazon 8036 错误：变体关系创建受限</a>
+        <a href="/amazon-error-8008">Amazon 8008 错误：子 SKU 无法识别</a>
+        <a href="/amazon-error-13013">Amazon 13013 错误：SKU 不在目录中</a>
+        <a href="/amazon-error-8058">Amazon 8058 错误：字段值无效</a>
+        <a href="/amazon-error-90112">Amazon 90112 错误：字段值或格式不被接受</a>
+        <a href="/amazon-error-20000">Amazon 20000 错误：媒体 URL 无法访问</a>
         <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
         <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 总览</a>
         <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查</a>
