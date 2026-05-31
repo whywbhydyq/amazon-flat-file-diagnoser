@@ -1,7 +1,0 @@
-Amazon Flat File Diagnoser
-
-Site: https://flatfile.ymirtool.com/
-Repository: https://github.com/whywbhydyq/amazon-flat-file-diagnoser
-
-Purpose:
-Help Amazon sellers parse Flat File Processing Reports locally in the browser and understand common feed error codes.

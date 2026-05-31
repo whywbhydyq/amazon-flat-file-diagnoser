@@ -1,3 +1,0 @@
-Contact: https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues
-Preferred-Languages: zh, en
-Canonical: https://amazon-flat-file-diagnoser.vercel.app/.well-known/security.txt
