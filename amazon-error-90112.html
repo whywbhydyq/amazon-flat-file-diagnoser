@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Error 90112 Fix | Invalid Field Value or Format</title>
+    <meta name="description" content="Fix Amazon error 90112 by checking the exact Processing Report message, invalid dates, numeric values, accepted values, required fields, and template definitions." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-error-90112" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-error-90112" />
+    <meta property="og:title" content="Amazon 90112 错误：字段值或格式不被接受 | Processing Report 修复指南" />
+    <meta property="og:description" content="Fix Amazon error 90112 by checking the exact Processing Report message, invalid dates, numeric values, accepted values, required fields, and template definitions." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 90112 错误：字段值或格式不被接受","description":"Fix Amazon error 90112 by checking the exact Processing Report message, invalid dates, numeric values, accepted values, required fields, and template definitions.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-90112","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 90112 错误：字段值或格式不被接受","item":"https://flatfile.ymirtool.com/amazon-error-90112"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero"><p class="eyebrow">Error 90112</p><h1>Amazon 90112 错误：字段值或格式不被接受</h1><p class="lead">90112 不是单一枚举错误。Amazon 官方说明它可由日期格式错误、数值包含无效字符、值超出范围、必填字段缺失或字段值或格式不被接受触发。必须按 error-message 和 attribute-name 定位。</p></section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+      <section class="article-card"><h2>优先读取 error-message 和 attribute-name</h2><p>先不要只按错误码猜字段。90112 的真实原因通常写在 <code>error-message</code> 里，例如日期格式、数值范围、必填字段或枚举值问题。</p></section>
+      <section class="article-card"><h2>修复步骤</h2><ol><li>复制 Processing Report 的完整 error-message，确认它指向日期、数值、必填字段还是枚举值。</li><li>在模板 Data Definitions / Valid Values 页确认该字段的数据类型、日期格式、数值范围和允许值。</li><li>日期字段按模板要求使用 YYYY-MM-DD 等指定格式；数值字段删除货币符号、中文单位、逗号和多余空格。</li><li>如果是必填字段缺失，先补 attribute-name 指向的字段，再用少量 SKU 重传验证。</li></ol><div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a></div></section>
+
+      <section class="article-card diagnostic-depth">
+        <h2>Processing Report 示例行</h2>
+        <p>下面是示意例子，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-DATE-005</td><td>90112</td><td>release_date</td><td>25</td><td>The value provided is not a valid DATE. Use the required date format.</td></tr></tbody></table></div>
+        <h3>修复前后示例</h3>
+        <pre class="example-code"><code>Before: release_date=31/12/2026 or release_date=None
+After:  release_date=2026-12-31</code></pre>
+      </section>
+
+      <section class="article-card field-table-card">
+        <h2>字段定位表</h2>
+        <p>先用 Processing Report 的 <code>error-message</code>、<code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>error-message</code></td><td>判断是日期、数值、必填项还是枚举值</td><td>不要只看 90112 这个错误码</td></tr><tr><td><code>attribute-name</code></td><td>定位具体模板列</td><td>回到 original-record-number 对应行修字段</td></tr><tr><td><code>date fields</code></td><td>日期格式必须符合模板要求</td><td>优先使用 YYYY-MM-DD 或模板指定格式</td></tr><tr><td><code>numeric fields</code></td><td>数值不能包含无效字符</td><td>删除货币符号、单位、中文字符和多余空格</td></tr><tr><td><code>Valid Values</code></td><td>确认允许枚举</td><td>不要自行翻译或自造枚举值</td></tr></tbody></table></div>
+        <h3>重新上传前 checklist</h3>
+        <ul>
+          <li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
+          <li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
+          <li>不要只根据错误码猜原因；优先读取 error-message 和 attribute-name。</li>
+          <li>重新上传后下载新的 Processing Report，确认同一字段不再报错。</li>
+        </ul>
+      </section>
+
+      <section class="article-card source-card">
+        <h2>规则来源与最终确认</h2>
+        <p>本页依据 Amazon Seller Central Error 90112 官方帮助页整理。由于 90112 覆盖多种字段校验失败，页面示例只作为定位方法，最终以 Processing Report 原文和当前分类模板为准。</p>
+        <div class="article-cta"><a href="/amazon-processing-report">Processing Report 字段阅读</a><a href="/amazon-inventory-file-template">库存文件模板填写指南</a><a href="/amazon-error-8058">8058 字段值无效或缺失</a><a href="/" class="primary-link">上传报告自动分组</a></div>
+      </section>
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Flat File Error Checker</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+        </div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

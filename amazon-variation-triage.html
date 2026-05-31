@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Variation Triage | Parent-Child Flat File Checker</title>
+    <meta name="description" content="Upload a Processing Report and flat file to check parent_sku, relationship_type, variation_theme, missing variation attributes, and whether a parent-child issue is file-fixable." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-variation-triage" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-variation-triage" />
+    <meta property="og:title" content="Amazon Variation Triage | Parent-Child Flat File Checker" />
+    <meta property="og:description" content="Check whether a parent-child variation issue is caused by parent_sku, relationship_type, variation_theme, missing attributes, or a catalog-level conflict." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Variation Triage for Flat File Upload Errors","description":"Upload a Processing Report and flat file to check parent_sku, relationship_type, variation_theme, missing variation attributes, and whether a parent-child issue is file-fixable.","inLanguage":"zh-CN","datePublished":"2026-05-31","dateModified":"2026-05-31","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-variation-triage","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Variation Triage","item":"https://flatfile.ymirtool.com/amazon-variation-triage"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-processing-report">Processing Report</a><a href="/amazon-feed-error-codes">错误码总览</a><a href="/">上传报告</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Variation Triage</p>
+        <h1>Amazon Variation Triage for Flat File Upload Errors</h1>
+        <p class="lead">上传 Processing Report 和 flat file，检查 parent_sku、relationship_type、variation_theme、size/color/style 等字段，判断父子体问题是文件可修、需要人工 catalog review，还是可能必须走 Seller Support。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-31 - Independent seller utility, not affiliated with Amazon.</p>
+
+      <section class="article-card">
+        <h2>什么时候用这个分诊流程？</h2>
+        <div class="guide-grid scenario-grid">
+          <a href="/"><strong>Size / color / style 变体无法归组</strong><span>适合服饰、鞋包、珠宝、饰品和 POD 商品，尤其是 child ASIN 被拆成独立 listing 或 dropdown 不显示。</span></a>
+          <a href="/"><strong>Processing Report 已有 8008 / 8036 / 8058 / 90244 / 99010</strong><span>这些错误常和 parentage、parent_sku、relationship_type、variation_theme 或变体属性有关。</span></a>
+          <a href="/"><strong>VA / Agency 需要先给客户出诊断</strong><span>先生成 SKU-level 问题表，再决定是否生成修正版 flat file 或转人工修复。</span></a>
+          <a href="/"><strong>试过 Seller Central 仍不知道错在哪</strong><span>分清是 flat file 结构错误、枚举值错误、catalog conflict，还是 Seller Support 才能处理的问题。</span></a>
+        </div>
+        <div class="article-cta"><a class="primary-link" href="/" data-track="processing_report_cta_clicked" data-source="variation-triage-page">Upload Processing Report</a><a class="secondary-link" href="/contact?intent=manual-review&source=variation-triage-page" data-track="manual_review_clicked" data-intent="manual-review" data-source="variation-triage-page">Request manual review</a><a class="secondary-link" href="/amazon-parent-child-variation-error">查看父子体字段对照</a></div>
+      </section>
+
+      <section class="article-card">
+        <h2>把这些具体问题先放在本页分诊</h2>
+        <p>以下 query 有明确任务，但目前不建议单独建薄页面。先在这里提供工具入口、字段检查和结果解释，等 Search Console 出现稳定曝光后再决定是否拆独立 URL。</p>
+        <div class="guide-grid scenario-grid">
+          <a href="/"><strong>Parent SKU not found</strong><span>检查 child 行的 <code>parent_sku</code> 是否为空、拼写是否完全匹配，以及文件中是否真的存在 parent 行。</span></a>
+          <a href="/"><strong>Child ASIN not showing under parent</strong><span>先看 Processing Report 是否有 SKU-level error，再用 flat file 检查 parentage、relationship_type 和 variation_theme。</span></a>
+          <a href="/"><strong>Variation dropdown not showing</strong><span>检查所有 child 是否有 size/color/style/material 等变体属性，以及组合是否重复或与 theme 不匹配。</span></a>
+          <a href="/amazon-error-90244"><strong>Unit count or valid value error</strong><span>如果 90244 指向 <code>unit_count</code>、<code>unit_count_type</code> 或 color/size 字段，先按字段回到 flat file 定位。</span></a>
+        </div>
+      </section>
+
+      <section class="article-card">
+        <h2>工具会检查哪些字段？</h2>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段组</th><th>检查内容</th><th>为什么重要</th></tr></thead><tbody>
+          <tr><td><code>sku</code> / <code>parent_sku</code></td><td>child 是否指向真实存在的 parent SKU，是否有 orphan child。</td><td>父子体无法关联时，常见原因是 SKU 引用错误或父体行缺失。</td></tr>
+          <tr><td><code>parentage</code></td><td>parent 行和 child 行是否区分正确。</td><td>父体通常是分组行，子体才是真实可售 SKU。</td></tr>
+          <tr><td><code>relationship_type</code></td><td>child 行是否填写 variation 或模板要求的关系值。</td><td>关系字段缺失会导致变体关系 feed 失败。</td></tr>
+          <tr><td><code>variation_theme</code></td><td>同一 family 内是否一致，是否缺失。</td><td>theme mismatch 会让 size/color/style 关系无法成立。</td></tr>
+          <tr><td><code>size_name</code> / <code>color_name</code> / <code>style_name</code></td><td>child 是否有对应变体属性，组合是否唯一。</td><td>dropdown 不显示或属性值被拒，通常要从这里查。</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="article-card">
+        <h2>分诊结果如何解释？</h2>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>结果</th><th>含义</th><th>下一步</th></tr></thead><tbody>
+          <tr><td>File-fixable</td><td>低风险空字段或可从同一文件确认的结构问题，例如 relationship_type 缺失、可推断的 variation_theme 缺失。</td><td>先预览 safe draft diff，再下载修复草稿；不自动补无法确认的 parent_sku。</td></tr>
+          <tr><td>Needs variation triage</td><td>Processing Report 只能说明报错，必须结合 flat file 才能判断结构原因。</td><td>补充 flat file，生成 family map。</td></tr>
+          <tr><td>Needs manual catalog review</td><td>可能涉及 ASIN contribution、品牌、类目限制、现有 catalog 锁定。</td><td>人工判断，不承诺单靠文件修复。</td></tr>
+          <tr><td>Seller Support likely</td><td>文件结构看起来正常，但 catalog 状态或后台限制导致无法更新。</td><td>整理 SKU、错误码、字段和截图，准备 case。</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="article-card">
+        <h2>Safe repaired-file draft 是什么？</h2>
+        <p>当 flat file 中存在低风险、可从同一文件推断的空字段时，工具会生成一个本地修复草稿。例如 child 行缺少 <code>relationship_type</code>，或同一 family 已经有唯一的 <code>variation_theme</code> 但部分行为空。</p>
+        <p>草稿不会自动推断缺失的 <code>parent_sku</code>，不会清空 parent 行的 price / quantity，不会创建新 SKU，也不会处理 8541、8036、Brand Registry、catalog contribution 或 Seller Support 才能解决的问题。</p>
+      </section>
+
+      <section class="article-card">
+        <h2>第一版不会做什么？</h2>
+        <ul>
+          <li>不要求 Seller Central 登录，不接账号权限。</li>
+          <li>不自动上传到 Amazon，不绕过平台流程。</li>
+          <li>不保证恢复所有 parent-child 关系，因为 catalog-level 问题不一定能靠 flat file 修复。</li>
+          <li>不处理 Brand Approval、Hazmat / SDS、Listing SEO 文案优化。</li>
+        </ul>
+      </section>
+
+      <section class="article-card related-guides">
+        <h2>相关指南</h2>
+        <div class="guide-grid">
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-parent-child-variation-error">Parent Child Variation 字段对照</a>
+          <a href="/amazon-error-90244">90244 Variation Attribute Error</a>
+          <a href="/amazon-error-8058">8058 Invalid or Missing Field Value</a>
+          <a href="/amazon-error-8008">8008 Child SKU Not Recognized</a>
+          <a href="/amazon-error-8541">8541 Catalog Conflict</a>
+        </div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script>document.addEventListener("click",function(e){var t=e.target.closest("[data-track]");if(!t)return;try{var p={tool:"amazon_flat_file_diagnoser",source:t.dataset.source||"",intent:t.dataset.intent||"",href:t.getAttribute("href")||""};if(window.va&&window.va.track)window.va.track(t.dataset.track,p);if(window.gtag)window.gtag("event",t.dataset.track,p);window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:t.dataset.track},p));}catch(_){}});</script>
+  </body>
+</html>

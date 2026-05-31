@@ -1,0 +1,11 @@
+sku	parentage	parent_sku	relationship_type	variation_theme	color_name	size_name	style_name	material_type	item_package_quantity	standard_price	quantity	update_delete
+PARENT-TEE	parent						Classic	Cotton	1			Update
+SKU-RED-001	child	PARENT-TEE	Variation	SizeColor	Red	S	Classic	Cotton	1	19.99	20	Update
+SKU-BLUE-003	child	PARENT-TEE			Blue	M	Classic	Cotton	1	19.99	15	Update
+SKU-GREEN-004	child	PARENT-TEE	Variation		Green		Classic	Cotton	1	19.99	8	Update
+SKU-ORPHAN-005	child		Variation	SizeColor	Black	L	Classic	Cotton	1	19.99	6	Update
+SKU-MISSING-PARENT	child	PARENT-MISSING	Variation	SizeColor	White	XL	Classic	Cotton	1	19.99	5	Update
+SKU-DUP-001	child	PARENT-TEE	Variation	SizeColor	Red	XL	Classic	Cotton	1	19.99	4	Update
+SKU-DUP-001	child	PARENT-TEE	Variation	SizeColor	Red	XL	Classic	Cotton	1	19.99	4	Update
+PARENT-SELLABLE	parent			SizeColor			Sport	Polyester	1	12.99	3	Update
+SKU-SELLABLE-CHILD	child	PARENT-SELLABLE	Variation	SizeColor	Yellow	M	Sport	Polyester	1	12.99	3	Update

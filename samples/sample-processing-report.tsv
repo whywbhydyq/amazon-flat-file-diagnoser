@@ -1,0 +1,7 @@
+sku	error-code	error-message	attribute-name	original-record-number
+SKU-RED-001	8541	The value provided conflicts with the Amazon catalog.	external_product_id	12
+SKU-RED-002	99010	A value is required for item_name.	item_name	13
+SKU-BLUE-003	90244	The child SKU does not match the variation relationship.	parent_sku	19
+SKU-CAT-004	13013	Your SKU cannot be added because the product is not in the catalog or has been deleted.	sku	21
+SKU-IMAGE-004	20000	We could not access the media at URL. The download request timed out.	main_image_url	22
+SKU-DATE-005	90112	The value provided is not a valid DATE. Use the required date format.	release_date	25

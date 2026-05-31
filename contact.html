@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Flat File Review | Amazon Flat File 错误诊断器</title>
+    <meta name="description" content="提交脱敏后的 Amazon Processing Report / Flat File 问题摘要，申请 repaired flat file、manual variation review 或反馈未覆盖错误码。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/contact" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/contact" />
+    <meta property="og:title" content="Request Flat File Review | Amazon Flat File 错误诊断器" />
+    <meta property="og:description" content="提交脱敏后的错误码、SKU 数量、marketplace 和问题摘要，申请修正版 flat file 或人工 variation review。" />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Request Amazon Flat File Review","description":"提交脱敏后的 Amazon Processing Report / Flat File 问题摘要，申请 repaired flat file、manual variation review 或反馈未覆盖错误码。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-31","mainEntityOfPage":"https://flatfile.ymirtool.com/contact","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Request Flat File Review","item":"https://flatfile.ymirtool.com/contact"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Request Review</p>
+        <h1>申请修正版 flat file 或人工分诊</h1>
+        <p class="lead">用结构化表单生成一个发送到 flatfile@ymirtool.com 的私有邮件草稿和一份 public-safe 反馈摘要。当前页面不上传文件、不接收 Seller Central 登录信息；请只提交错误码、SKU 数量、marketplace、问题类型和你已经尝试的修复方式。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-31 - Independent seller utility, not affiliated with Amazon.</p>
+
+      <section class="article-card service-options">
+        <h2>可申请的下一步</h2>
+        <div class="pricing-grid">
+          <article>
+            <span>Diagnostic report</span>
+            <strong>$19</strong>
+            <p>整理 Processing Report、错误码、受影响 SKU、字段和下一步修复清单。</p>
+          </article>
+          <article>
+            <span>Repaired flat file</span>
+            <strong>$49+</strong>
+            <p>适合缺字段、parent_sku、relationship_type、variation_theme 等文件可修问题。</p>
+          </article>
+          <article>
+            <span>Manual variation review</span>
+            <strong>$149+</strong>
+            <p>适合 parent-child split、dropdown 不显示、catalog conflict 或 Seller Support case。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="article-card">
+        <h2>生成私有询盘摘要</h2>
+        <form id="reviewRequestForm" class="request-form">
+          <label>
+            Request type
+            <select name="requestType" required>
+              <option value="repaired-flat-file">Repaired flat file</option>
+              <option value="manual-review">Manual variation review</option>
+              <option value="diagnostic-report">Diagnostic report</option>
+              <option value="missing-error-code">Missing error code / feedback</option>
+            </select>
+          </label>
+          <label>
+            Your role
+            <select name="role" required>
+              <option value="seller">Amazon seller</option>
+              <option value="va-agency">Amazon VA / agency</option>
+              <option value="catalog-team">Catalog team</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <div class="form-row">
+            <label>
+              Marketplace
+              <input name="marketplace" type="text" placeholder="US, CA, UK, DE..." />
+            </label>
+            <label>
+              Affected SKU count
+              <input name="skuCount" type="text" inputmode="numeric" placeholder="e.g. 75" />
+            </label>
+          </div>
+          <label>
+            Error codes
+            <input name="errorCodes" type="text" placeholder="e.g. 8008, 8058, 90244" />
+          </label>
+          <label>
+            Issue summary
+            <textarea name="issueSummary" rows="5" placeholder="Example: size/color children are uploaded as separate listings; Processing Report says parent SKU not found. Do not include real buyer/order/account data." required></textarea>
+          </label>
+          <label>
+            What have you already tried?
+            <textarea name="tried" rows="4" placeholder="Example: Variation Wizard, re-uploaded flat file, checked parent_sku, opened Seller Support case..." ></textarea>
+          </label>
+          <div class="form-row">
+            <label>
+              Contact name or company
+              <input name="contactName" type="text" placeholder="Optional" />
+            </label>
+            <label>
+              Reply email
+              <input name="email" type="email" placeholder="Optional for the generated brief" />
+            </label>
+          </div>
+          <div class="privacy-note">
+            <strong>不要提交：</strong>Seller Central 登录、真实店铺名、买家信息、订单号、完整账号截图、未公开商品编码、供应商资料或其它敏感商业信息。
+          </div>
+          <button class="primary-button" type="submit" data-track="inquiry_form_submit_clicked" data-source="contact-form">Generate private inquiry brief</button>
+        </form>
+      </section>
+
+      <section id="requestOutput" class="article-card request-output hidden" aria-live="polite">
+        <h2>Generated inquiry brief</h2>
+        <p>下面分成两份摘要：第一份只在浏览器本地生成，可复制到私下邮件或打开本机邮件草稿；第二份是 public-safe 版本，会自动移除姓名和邮箱，只用于公开产品反馈。</p>
+        <div class="privacy-note private-handoff-note"><strong>推荐路径：</strong>服务询盘请使用 private brief 或邮件草稿发送到 <code>flatfile@ymirtool.com</code>；公开 GitHub Issue 只适合提交脱敏后的错误码反馈，不适合申请人工服务或提交商业材料。</div>
+        <h3>Private brief</h3>
+        <textarea id="requestBrief" readonly rows="14"></textarea>
+        <div class="article-cta">
+          <button id="copyRequestBrief" class="secondary-button" type="button" data-track="inquiry_brief_copy_clicked" data-source="contact-form">Copy private brief</button>
+          <a id="openEmailDraft" class="primary-link" href="mailto:flatfile@ymirtool.com?subject=Amazon%20flat%20file%20review%20request" data-track="email_draft_opened" data-source="contact-form">Open private email draft</a>
+        </div>
+        <h3>Public-safe feedback brief</h3>
+        <p class="rule-source">This version intentionally removes name and email. Use it only for public product feedback or missing error-code reports.</p>
+        <textarea id="publicRequestBrief" readonly rows="14"></textarea>
+        <div class="article-cta">
+          <button id="copyPublicRequestBrief" class="secondary-button" type="button" data-track="inquiry_public_brief_copy_clicked" data-source="contact-form">Copy public-safe brief</button>
+          <a id="openGithubIssue" class="secondary-link" href="https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new" target="_blank" rel="noopener noreferrer" data-track="github_issue_opened" data-source="contact-form">Open public GitHub feedback issue</a>
+        </div>
+      </section>
+
+      <section class="article-card">
+        <h2>如果只是反馈未覆盖错误码</h2>
+        <p>可以直接提交脱敏后的错误码、原始错误信息、字段名、站点和已经尝试的修复方式。公开 Issue 只适合产品反馈，不适合人工服务询盘、真实文件或商业敏感数据。</p>
+        <div class="article-cta"><a class="secondary-link" href="https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new" target="_blank" rel="noopener noreferrer" data-track="missing_error_feedback_clicked" data-source="contact-page">提交脱敏错误报告</a></div>
+      </section>
+
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Flat File Error Checker</a>
+          <a href="/amazon-variation-triage">Amazon Variation Triage</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+        </div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="./contact.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Variation Flat File Error Fix | Parentage, Parent SKU & Theme</title>
+    <meta name="description" content="Fix Amazon variation flat file errors by checking parentage, parent_sku, relationship_type, variation_theme, valid values, child rows, and Processing Report fields." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-variation-flat-file-error" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-variation-flat-file-error" />
+    <meta property="og:title" content="Amazon Variation Flat File Error Fix | Parentage, Parent SKU & Theme" />
+    <meta property="og:description" content="Fix Amazon variation flat file errors by checking parentage, parent_sku, relationship_type, variation_theme, valid values, child rows, and Processing Report fields." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 变体 Flat File 错误排查","description":"Fix Amazon variation flat file errors by checking parentage, parent_sku, relationship_type, variation_theme, valid values, child rows, and Processing Report fields.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-variation-flat-file-error","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 变体 Flat File 错误排查","item":"https://flatfile.ymirtool.com/amazon-variation-flat-file-error"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-feed-error-codes">错误码总览</a><a href="/amazon-flat-file-upload-failed">上传失败排查</a><a href="/">上传报告</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Variation Error</p>
+        <h1>Amazon 变体 Flat File 错误排查</h1>
+        <p class="lead">变体上传失败通常不是单纯标题或图片问题，而是父体、子体、变体主题、属性值或上传顺序没有对齐。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+
+      <section class="article-card">
+        <h2>变体上传失败时先看这组字段</h2>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段组</th><th>要检查什么</th><th>常见错误码</th></tr></thead><tbody>
+          <tr><td>关系字段</td><td><code>parentage</code>、<code>parent_sku</code>、<code>relationship_type</code></td><td>8008、8036、99010</td></tr>
+          <tr><td>变体主题</td><td><code>variation_theme</code> 是否父子体一致，是否是类目允许值。</td><td>99010、90244、8036</td></tr>
+          <tr><td>变体属性</td><td>颜色、尺寸、数量、单位等属性是否完整且组合唯一。</td><td>90244、90112</td></tr>
+          <tr><td>子体售卖信息</td><td>每个 child 是否有价格、库存、商品编码和必要图片。</td><td>8560、8058、13013</td></tr>
+        </tbody></table></div>
+      </section>
+      <section class="article-card">
+        <h2>示例 Processing Report 行</h2>
+        <pre class="example-code">original-record-number	sku	error-code	error-message	attribute-name
+57	PARENT-SHOE	99010	A value is missing from one or more required columns from this group: [variation_theme = null].	variation_theme
+62	SHOE-BLK-8	90244	We can't accept the Size you entered for Size. Select an approved value and resubmit.	size_name
+74	SHOE-BLK-9	8008	We cannot recognize the child SKU referenced in this relationship.	sku</pre>
+      </section>
+      <section class="article-card">
+        <h2>推荐排查顺序</h2>
+        <ol class="steps">
+          <li><strong>先确定父体是否只是分组行。</strong><span>父体通常不应作为真实售卖 SKU 填价格、库存、商品编码。</span></li>
+          <li><strong>确认所有子体指向同一个父体。</strong><span><code>parent_sku</code> 必须完全匹配父体 SKU，不能多空格、大小写或符号错误。</span></li>
+          <li><strong>确认 variation_theme 一致。</strong><span>父体和全部子体应使用同一个类目允许的 variation_theme。</span></li>
+          <li><strong>确认变体属性组合唯一。</strong><span>同一个父体下不能有两个 child 使用完全相同的颜色/尺寸组合。</span></li>
+          <li><strong>用字段分组批量修复。</strong><span>如果报告多次指向 <code>color_name</code> 或 <code>size_name</code>，先修 Valid Values，而不是逐个 SKU 猜。</span></li>
+        </ol>
+      </section>
+      <section class="article-card">
+        <h2>常见错误与对应页面</h2>
+        <div class="guide-grid">
+          <a href="/amazon-error-99010">99010：父子体必填字段组缺值</a>
+          <a href="/amazon-error-90244">90244：变体属性值不被接受</a>
+          <a href="/amazon-error-8036">8036：变体关系创建受限</a>
+          <a href="/amazon-error-8008">8008：child SKU 无法识别</a>
+        </div>
+        <div class="article-cta"><a class="primary-link" href="/amazon-variation-triage">Diagnose variation structure</a><a class="primary-link" href="/">上传报告自动诊断</a><a class="secondary-link" href="/amazon-parent-child-variation-error">父子体字段对照</a></div>
+      </section>
+      <section class="article-card"><h2>边界说明</h2><p class="rule-source">变体规则受站点、类目、品牌权限、目录状态和 Amazon 当前政策影响。本文给出字段排查顺序，不能替代 Seller Central 的最终上传结果。</p></section>
+      
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Processing Report Error Checker</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+          <a href="/amazon-inventory-file-template">Inventory File Template 填写指南</a>
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-error-99010">99010 Required Fields</a><a href="/amazon-error-90244">90244 Valid Values</a><a href="/amazon-parent-child-variation-error">Parent Child Variation</a>
+        </div>
+      </section>
+
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

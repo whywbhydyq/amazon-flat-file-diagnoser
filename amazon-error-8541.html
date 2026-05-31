@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Error 8541 Fix | ASIN Catalog Conflict</title>
+    <meta name="description" content="Fix Amazon error 8541 by checking ASIN catalog conflicts, external product ID, brand, title, manufacturer, color, size, and processing report rows." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-error-8541" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-error-8541" />
+    <meta property="og:title" content="Amazon 8541 错误：ASIN 目录属性冲突 | Processing Report 修复指南" />
+    <meta property="og:description" content="Fix Amazon error 8541 by checking ASIN catalog conflicts, external product ID, brand, title, manufacturer, color, size, and processing report rows." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 8541 错误：ASIN 目录属性冲突","description":"Fix Amazon error 8541 by checking ASIN catalog conflicts, external product ID, brand, title, manufacturer, color, size, and processing report rows.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-8541","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 8541 错误：商品编码与现有 ASIN 信息冲突","item":"https://flatfile.ymirtool.com/amazon-error-8541"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">AF</span>
+        <div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div>
+      </a>
+      <nav class="top-actions"><a href="/amazon-processing-report">Processing Report 指南</a><a href="/#feedback">反馈错误码</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Error 8541</p>
+        <h1>Amazon 8541 错误：ASIN 目录属性冲突</h1>
+        <p class="lead">8541 通常表示你上传的商品编码已经匹配到亚马逊目录中的 ASIN，但品牌、标题、制造商、颜色、尺寸或其它关键属性与目录记录不一致。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+      <section class="article-card">
+        <h2>优先检查字段</h2>
+        <p><code>external_product_id</code>、<code>external_product_id_type</code>、<code>brand</code>、<code>item_name</code>、<code>manufacturer</code>、颜色和尺寸字段。</p>
+      </section>
+      <section class="article-card">
+        <h2>修复步骤</h2>
+        <ol>
+          <li>确认这个 SKU 是要匹配已有 ASIN，还是创建全新 ASIN。</li>
+          <li>检查 UPC/EAN 是否填错，尤其是复制表格时残留的旧编码。</li>
+          <li>对比目录 ASIN 页面上的品牌、标题、制造商、型号、颜色、尺寸。</li>
+          <li>如果目录信息错误，准备包装图、品牌授权或官网链接后联系 Seller Support。</li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a></div>
+      </section>
+
+
+      <section class="article-card diagnostic-depth">
+        <h2>Processing Report 示例行</h2>
+        <p>下面是假设示例，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-RED-001</td><td>8541</td><td>external_product_id</td><td>12</td><td>The value provided conflicts with the Amazon catalog.</td></tr></tbody></table></div>
+        <h3>修复前后示例</h3>
+        <pre class="example-code"><code>Before: external_product_id=012345678905, brand=My Store Brand, item_name=Red Bottle 20oz
+After:  external_product_id=012345678905, brand=Catalog Brand, item_name=Catalog Brand Stainless Bottle 20oz Red</code></pre>
+      </section>
+
+      <section class="article-card field-table-card">
+        <h2>字段定位表</h2>
+        <p>先用 Processing Report 的 <code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>external_product_id</code></td><td>确认 UPC/EAN/ASIN 是否属于目标商品</td><td>不要把旧模板里的编码复制到新 SKU</td></tr><tr><td><code>brand</code></td><td>与目录 ASIN 或 Brand Registry 保持一致</td><td>不要填店铺名、营销词或大小写不一致的品牌</td></tr><tr><td><code>item_name</code></td><td>对比目录标题中的核心型号、颜色、套装数量</td><td>不要为了绕过冲突而提交不真实标题</td></tr><tr><td><code>manufacturer / model_number</code></td><td>确认制造商和型号是否与目录页面一致</td><td>目录锁定时准备证明材料联系 Seller Support</td></tr></tbody></table></div>
+        <h3>重新上传前 checklist</h3>
+        <ul>
+          <li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
+          <li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
+          <li>保存为制表符分隔文本或 Seller Central 要求的格式后再上传。</li>
+          <li>重新上传后下载新的 Processing Report，确认同一字段不再报错。</li>
+        </ul>
+      </section>
+
+      <section class="article-card source-card">
+        <h2>规则来源与最终确认</h2>
+        <p>本页诊断依据：<a href="https://sellercentral.amazon.com/gp/help/external/G200692330" target="_blank" rel="noopener">Amazon Seller Central Help</a>。如果 Processing Report 中的原始错误信息与本页示例不一致，应优先相信你自己的报告和当前分类模板。</p>
+        <div class="article-cta"><a href="/amazon-error-8058">8058 字段值无效或缺少必填值</a><a href="/amazon-error-8036">8036 变体关系创建受限</a><a href="/amazon-feed-error-codes">Feed error codes 总览</a><a class="primary-link" href="/">上传报告自动分组</a></div>
+      </section>
+
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Flat File Error Checker</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+        </div>
+      </section>
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

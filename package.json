@@ -1,0 +1,18 @@
+{
+  "name": "amazon-flat-file-diagnoser",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A browser-only Amazon Processing Report and Flat File error checker with optional parent-child variation triage.",
+  "scripts": {
+    "start": "python -m http.server 4173 --bind 127.0.0.1",
+    "check": "node --check app.js && node --check contact.js && node --check scripts/ignore-old-commit.js"
+  },
+  "keywords": [
+    "amazon",
+    "flat-file",
+    "seller-central",
+    "processing-report",
+    "seo-tool"
+  ],
+  "license": "UNLICENSED"
+}

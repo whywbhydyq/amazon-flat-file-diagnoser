@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Inventory File Template Guide | Required Fields & Valid Values</title>
+    <meta name="description" content="Check Amazon Inventory File Template fields, required columns, valid values, product type, variation fields, and upload format before re-submitting a flat file." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-inventory-file-template" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-inventory-file-template" />
+    <meta property="og:title" content="Amazon Inventory File Template Guide | Required Fields & Valid Values" />
+    <meta property="og:description" content="Check Amazon Inventory File Template fields, required columns, valid values, product type, variation fields, and upload format before re-submitting a flat file." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Inventory File Template 填写指南","description":"Check Amazon Inventory File Template fields, required columns, valid values, product type, variation fields, and upload format before re-submitting a flat file.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-inventory-file-template","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Inventory File Template 填写指南","item":"https://flatfile.ymirtool.com/amazon-inventory-file-template"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-feed-error-codes">错误码总览</a><a href="/amazon-flat-file-upload-failed">上传失败排查</a><a href="/">上传报告</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Inventory Template</p>
+        <h1>Amazon Inventory File Template 填写指南</h1>
+        <p class="lead">很多上传错误不是字段本身难，而是模板站点、分类、版本或 Valid Values 不匹配。填写前先确认模板来源。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+
+      <section class="article-card">
+        <h2>填写前先确认模板来源</h2>
+        <p>Inventory File Template 是用于批量添加或编辑商品的 Excel 模板。类目、站点和模板版本不对，会导致 required fields、valid values、variation theme 或 product type 校验失败。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>检查项</th><th>为什么重要</th><th>常见错误码</th></tr></thead><tbody>
+          <tr><td>站点和 marketplace</td><td>US、UK、DE、JP 等站点的字段和值可能不同。</td><td>8058、90112、90244</td></tr>
+          <tr><td>分类 / product type</td><td>类目不同，Required 与 Valid Values 不同。</td><td>8560、8058、99010</td></tr>
+          <tr><td>Data Definitions</td><td>定义每列字段含义、是否必填、格式限制。</td><td>99010、8058、90112</td></tr>
+          <tr><td>Valid Values</td><td>颜色、尺寸、单位、材质等枚举值必须匹配允许列表。</td><td>90244、90112</td></tr>
+          <tr><td>Template version</td><td>旧模板可能缺少新必填字段或使用过期字段。</td><td>8560、99010</td></tr>
+        </tbody></table></div>
+      </section>
+      <section class="article-card">
+        <h2>最小填写策略</h2>
+        <ol class="steps">
+          <li><strong>先决定是创建还是更新。</strong><span>创建新 SKU 和更新已有 SKU 需要的字段不同；不要把旧库存报表当作创建模板。</span></li>
+          <li><strong>先填必填组，再填营销内容。</strong><span>优先完成 SKU、product type、brand、product-id、variation fields、price、quantity 等阻断字段。</span></li>
+          <li><strong>从 Valid Values 复制允许值。</strong><span>不要把前台显示词、中文翻译或其它类目的值直接填进模板。</span></li>
+          <li><strong>保存前保留原列头。</strong><span>不要改列名大小写、删除隐藏列或把 Tab 分隔文件另存为带格式的工作簿再上传。</span></li>
+        </ol>
+      </section>
+      <section class="article-card">
+        <h2>示例：模板字段与 Processing Report 对照</h2>
+        <pre class="example-code">original-record-number	sku	error-code	error-message	attribute-name
+57	PARENT-TEE	99010	A value is missing from one or more required columns from this group: [variation_theme = null].	variation_theme
+62	TEE-BLK-M	90244	We can't accept the Color you entered for Color.	color_name
+81	TEE-BLK-L	8058	The value provided for a required field is invalid or missing.	size_name</pre>
+        <p>处理方式：回到模板的 Data Definitions 和 Valid Values 页，分别检查 <code>variation_theme</code>、<code>color_name</code>、<code>size_name</code>，再回原始行号修正。</p>
+      </section>
+      <section class="article-card">
+        <h2>重新上传前 checklist</h2>
+        <ul>
+          <li>模板来自目标站点和目标类目。</li>
+          <li>父体与子体使用同一类目模板和同一 variation_theme。</li>
+          <li>所有 required / conditionally required 字段组完整。</li>
+          <li>枚举字段来自 Valid Values 页。</li>
+          <li>日期、价格、数量、单位格式符合模板要求。</li>
+          <li>上传后下载 Processing Report，而不是只看页面状态。</li>
+        </ul>
+        <div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a><a class="secondary-link" href="/amazon-error-99010">查看 99010 必填字段</a></div>
+      </section>
+      <section class="article-card"><h2>来源与边界</h2><p class="rule-source">Amazon 官方说明 Inventory File Template 是用于批量添加或编辑商品的 Excel 模板；具体字段和允许值以 Seller Central 下载的当前类目模板为准。</p></section>
+      
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Processing Report Error Checker</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+          <a href="/amazon-inventory-file-template">Inventory File Template 填写指南</a>
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-error-8058">8058 Required Fields</a><a href="/amazon-error-90112">90112 Field Validation</a>
+        </div>
+      </section>
+
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Processing Report Guide | Error Code, SKU, Row & Field</title>
+    <meta name="description" content="Learn how to read Amazon Processing Reports by error code, SKU, original row number, field name, and message before fixing Flat File upload errors." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-processing-report" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-processing-report" />
+    <meta property="og:title" content="Amazon Processing Report Guide | Error Code, SKU, Row & Field" />
+    <meta property="og:description" content="Learn how to read Amazon Processing Reports by error code, SKU, original row number, field name, and message before fixing Flat File upload errors." />
+    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Processing Report 中文阅读指南","description":"Learn how to read Amazon Processing Reports by error code, SKU, original row number, field name, and message before fixing Flat File upload errors.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-processing-report","author":{"@type":"Organization","name":"YmirTool"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Processing Report 中文阅读指南","item":"https://flatfile.ymirtool.com/amazon-processing-report"}]}
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a>
+      <nav class="top-actions"><a href="/amazon-feed-error-codes">错误码总览</a><a href="/amazon-flat-file-upload-failed">上传失败排查</a><a href="/">上传报告</a></nav>
+    </header>
+    <main class="article-shell">
+      <section class="article-hero">
+        <p class="eyebrow">Processing Report</p>
+        <h1>Amazon Processing Report 中文阅读指南</h1>
+        <p class="lead">上传失败后，先用 Processing Report 定位错误码、SKU、原始行号和字段名，再回到原始 Flat File 修改。</p>
+      </section>
+      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
+
+      <section class="article-card">
+        <h2>Processing Report 里先看哪几列</h2>
+        <p>Processing Report 的价值不是告诉你“上传失败了”，而是把失败定位到 SKU、原始行号、错误码、错误类型、错误消息和字段。先把这些列合并看，再回到原始 Flat File 修改。</p>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>报告列</th><th>作用</th><th>如何使用</th></tr></thead><tbody>
+          <tr><td><code>original-record-number</code></td><td>原始上传文件中的记录行号</td><td>回到原模板定位具体行，不要只按导出后的 Excel 行号猜。</td></tr>
+          <tr><td><code>sku</code></td><td>受影响的 Seller SKU</td><td>判断是单个 SKU 问题，还是整个父子体组或某个字段批量失败。</td></tr>
+          <tr><td><code>error-code</code></td><td>Amazon 返回的错误码</td><td>先按错误码分组，例如 8541、99010、90244、8560。</td></tr>
+          <tr><td><code>error-message</code></td><td>英文错误描述</td><td>当错误码较泛时，以 message 中的字段和值为准。</td></tr>
+          <tr><td><code>attribute-name</code></td><td>Amazon 指向的字段或属性</td><td>优先回模板修改这个字段，也可用本工具的“按字段”视图批量处理。</td></tr>
+          <tr><td><code>error-type</code></td><td>Error / Warning 等类型</td><td>Error 通常先修；Warning 是否影响发布要结合 Seller Central 状态确认。</td></tr>
+        </tbody></table></div>
+      </section>
+      <section class="article-card">
+        <h2>示例 Processing Report 行</h2>
+        <p>下面是示意行，真实报告字段顺序可能因站点、模板和下载格式不同而变化。本工具会尝试识别常见列名并按错误码、SKU、行号和字段分组。</p>
+        <pre class="example-code">original-record-number	sku	error-code	error-type	error-message	attribute-name
+57	PARENT-TEE-BLK	99010	Error	A value is missing from one or more required columns from this group: [parent_child = Parent], [variation_theme = null].	variation_theme
+84	TEE-BLK-M	90244	Error	We can't accept the Color you entered for Color. Select an approved value and resubmit.	color_name</pre>
+      </section>
+      <section class="article-card">
+        <h2>建议阅读顺序</h2>
+        <ol class="steps">
+          <li><strong>先看 Feed Processing Summary。</strong><span>确认 processed / successful / error counts，判断是全量失败还是部分 SKU 失败。</span></li>
+          <li><strong>再按错误码分组。</strong><span>优先修 8541、8560、99010、90244、8036 这类会阻断创建、匹配或变体关系的错误。</span></li>
+          <li><strong>按字段合并同类问题。</strong><span>如果大量 SKU 都指向 <code>variation_theme</code>、<code>color_name</code>、<code>parent_sku</code>，先修字段规则而不是逐个 SKU 猜。</span></li>
+          <li><strong>回原始模板修行号。</strong><span>使用 <code>original-record-number</code> 定位原始上传行，避免筛选、排序或另存后行号错位。</span></li>
+        </ol>
+        <div class="article-cta"><a class="primary-link" href="/">上传 Processing Report 自动分组</a><a class="secondary-link" href="/amazon-feed-error-codes">查看错误码总览</a></div>
+      </section>
+      <section class="article-card">
+        <h2>常见误区</h2>
+        <ul>
+          <li>不要只复制错误消息最后一句；很多错误真正的字段在括号或 attribute-name 中。</li>
+          <li>不要看到 99010 就只补一个字段；它经常是条件必填字段组缺值或冲突。</li>
+          <li>不要把父体和子体混在一行修；父体、子体的价格、库存、商品编码填写规则不同。</li>
+          <li>不要把工具结果当作 Amazon 官方判定；最终状态仍以 Seller Central 上传结果为准。</li>
+        </ul>
+        <p class="rule-source">来源边界：本页依据 Amazon Seller Central 的上传状态、错误码帮助页和 Processing Report 常见列组织排查流程。不同站点、类目和模板版本可能返回不同字段名。</p>
+      </section>
+      
+      <section class="article-card related-guides">
+        <h2>相关 Amazon Flat File 指南</h2>
+        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+        <div class="guide-grid">
+          <a href="/">Amazon Processing Report Error Checker</a>
+          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+          <a href="/amazon-inventory-file-template">Inventory File Template 填写指南</a>
+          <a href="/amazon-variation-flat-file-error">Variation Flat File 错误排查</a>
+          <a href="/amazon-error-99010">99010 Required Fields</a><a href="/amazon-error-90244">90244 Attribute Value</a>
+        </div>
+      </section>
+
+    </main>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
+</html>
