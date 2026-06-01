@@ -82,7 +82,7 @@ function githubIssueUrl(data, publicBrief) {
   return `https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(publicBrief)}`;
 }
 
-const INQUIRY_EMAIL = "flatfile@ymirtool.com";
+const INQUIRY_EMAIL = "ymirtool@ymirtool.com";
 
 function mailtoUrl(data, privateBrief) {
   const subject = `[${labelForRequest(data.requestType)}] Amazon flat file review request`;
