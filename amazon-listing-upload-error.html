@@ -1,45 +1,164 @@
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Listing 上传错误排查 | Flat File 批量创建 Listing</title>
-    <meta name="description" content="Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-listing-upload-error" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="zh_CN" />
-    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-listing-upload-error" />
-    <meta property="og:title" content="Amazon Listing 上传错误排查 | Flat File 批量创建 Listing" />
-    <meta property="og:description" content="Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。" />
-    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon Listing 上传错误排查","description":"Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-21","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-listing-upload-error","author":{"@type":"Organization","name":"YmirTool"}}
-    </script>
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon Listing 上传错误排查","item":"https://flatfile.ymirtool.com/amazon-listing-upload-error"}]}
-    </script>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
-    <main class="article-shell">
-      <section class="article-hero"><p class="eyebrow">Listing Upload</p><h1>Amazon Listing 上传错误排查</h1><p class="lead">Listing 批量上传失败时，最重要的是把错误拆成编码问题、目录冲突、缺字段、变体问题和格式问题，而不是混在一起改。</p></section>
-      <p class="article-meta">Updated: 2026-05-21 - Independent seller utility, not affiliated with Amazon.</p>
-      <section class="article-card"><h2>常见错误类型</h2><ul><li>ASIN 目录冲突：8541；变体关系创建受限：8036。</li><li>缺必填字段：99010、8560。</li><li>变体关系错误：90244。</li><li>子 SKU 引用错误：8008；字段值或日期/数值格式错误：90112；图片/媒体 URL 错误：20000；SKU/catalog 状态错误：13013。</li></ul></section>
-      <section class="article-card"><h2>建议流程</h2><ol><li>先解析 Processing Report。</li><li>按错误码分组。</li><li>先修阻断错误，再修内容质量错误。</li><li>每次只改一类问题，重新上传小样本验证。</li></ol><div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a></div></section>
+<!DOCTYPE html>
 
-      <section class="article-card related-guides">
-        <h2>相关 Amazon Flat File 指南</h2>
-        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
-        <div class="guide-grid">
-          <a href="/">Amazon Flat File Error Checker</a>
-          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
-          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
-          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
-        </div>
-      </section>
-    </main>
-    <script defer src="/_vercel/insights/script.js"></script>
-  </body>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amazon Listing 上传错误排查 | Flat File 批量创建 Listing</title>
+<meta content="Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。" name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://flatfile.ymirtool.com/amazon-listing-upload-error" rel="canonical"/>
+<link href="https://flatfile.ymirtool.com/rsl.xml" rel="license" type="application/rsl+xml"/>
+<meta content="article" property="og:type"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="https://flatfile.ymirtool.com/amazon-listing-upload-error" property="og:url"/>
+<meta content="Amazon Listing 上传错误排查 | Flat File 批量创建 Listing" property="og:title"/>
+<meta content="Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。" property="og:description"/>
+<meta content="Amazon Flat File Error Checker" property="og:site_name"/><meta content="https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png" property="og:image"/><meta content="https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="Parent-child variation triage workflow showing parent SKU, child SKUs, theme mismatch, and required field checks." property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png" name="twitter:image"/><meta content="Parent-child variation triage workflow showing parent SKU, child SKUs, theme mismatch, and required field checks." name="twitter:image:alt"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://flatfile.ymirtool.com/amazon-listing-upload-error#article",
+  "description": "Amazon Listing 批量上传失败时，按商品编码、品牌、必填字段、变体关系、图片 URL 和字段格式逐步排查。",
+  "inLanguage": "zh-CN",
+  "dateModified": "2026-06-06",
+  "url": "https://flatfile.ymirtool.com/amazon-listing-upload-error",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ymirtool.com/#organization",
+    "name": "Ymir Tool",
+    "url": "https://ymirtool.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://flatfile.ymirtool.com/#logo",
+      "url": "https://flatfile.ymirtool.com/icons/icon-512.png",
+      "contentUrl": "https://flatfile.ymirtool.com/icons/icon-512.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "isPartOf": {
+    "@id": "https://flatfile.ymirtool.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png",
+    "contentUrl": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png",
+    "thumbnailUrl": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.webp",
+    "caption": "Parent-child variation triage workflow for Amazon flat file repair.",
+    "width": 1200,
+    "height": 630,
+    "encodingFormat": "image/png",
+    "creator": {
+      "@id": "https://ymirtool.com/#organization"
+    },
+    "copyrightHolder": {
+      "@id": "https://ymirtool.com/#organization"
+    }
+  },
+  "headline": "Amazon Listing 上传错误排查",
+  "datePublished": "2026-05-21",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://flatfile.ymirtool.com/amazon-listing-upload-error",
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png",
+      "contentUrl": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png",
+      "thumbnailUrl": "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.webp",
+      "caption": "Parent-child variation triage workflow for Amazon flat file repair.",
+      "width": 1200,
+      "height": 630,
+      "encodingFormat": "image/png"
+    }
+  },
+  "author": {
+    "@id": "https://ymirtool.com/#organization"
+  },
+  "image": [
+    "https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Amazon flat file uploads"
+    },
+    {
+      "@type": "Thing",
+      "name": "inventory file templates"
+    },
+    {
+      "@type": "Thing",
+      "name": "listing upload recovery"
+    }
+  ],
+  "keywords": [
+    "Amazon flat file uploads",
+    "inventory file templates",
+    "listing upload recovery",
+    "Amazon Listing 上传错误排查"
+  ],
+  "citation": "https://flatfile.ymirtool.com/answer-engine-summary.txt"
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Amazon Flat File Error Checker",
+      "item": "https://flatfile.ymirtool.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Amazon Listing 上传错误排查",
+      "item": "https://flatfile.ymirtool.com/amazon-listing-upload-error"
+    }
+  ],
+  "@id": "https://flatfile.ymirtool.com/amazon-listing-upload-error#breadcrumb"
+}</script>
+<link href="./styles.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+<main class="article-shell">
+<section class="article-hero"><p class="eyebrow">Listing Upload</p><h1>Amazon Listing 上传错误排查</h1><p class="lead">Listing 批量上传失败时，最重要的是把错误拆成编码问题、目录冲突、缺字段、变体问题和格式问题，而不是混在一起改。先用 Processing Report 定位 row、SKU、attribute-name 和 error-code，再决定哪些能在 flat file 里修，哪些要进入 catalog review 或 Seller Support case。</p></section>
+<p class="article-meta">Updated: 2026-06-06 - Independent seller utility, not affiliated with Amazon.</p>
+<section class="article-card"><h2>常见错误类型</h2><ul><li>ASIN 目录冲突：8541；变体关系创建受限：8036。</li><li>缺必填字段：99010、8560。</li><li>变体关系错误：90244。</li><li>子 SKU 引用错误：8008；字段值或日期/数值格式错误：90112；图片/媒体 URL 错误：20000；SKU/catalog 状态错误：13013。</li></ul></section>
+<section class="article-card" id="diagnostic-sequence">
+<h2>先把失败拆成五类</h2>
+<p>不要直接重传整份模板。先打开 Processing Report，确认每条错误的 SKU、row number、attribute-name、error-code 和 message。对于同一个 SKU，如果同时出现 8541、99010 和 90244，应先处理 catalog identity 或 variation 关系，再补字段；否则你可能会反复修补一个最终仍无法创建的 listing。</p>
+<ul>
+<li><strong>Catalog identity / ASIN conflict：</strong>通常涉及品牌、UPC/EAN、manufacturer、part number 或已有 ASIN。文件修正只能解决明显字段错误；目录归属冲突通常需要证据和人工 review。</li>
+<li><strong>Required attribute missing：</strong>99010、8560 一类错误要回到最新类目模板，确认必填字段、推荐字段和 theme 触发字段，而不是只补 Processing Report 点名的一个字段。</li>
+<li><strong>Variation relationship：</strong>90244、8036、8008 等错误需要同时检查 parent_sku、parentage、relationship_type、variation_theme 和子体差异属性。</li>
+<li><strong>Value / format validation：</strong>8058、90112 常见于枚举值、日期、数字、单位、URL、大小写或 marketplace 特定值。</li>
+<li><strong>Media and image URL：</strong>20000 类错误要确认 HTTPS、公开访问、重定向、图片尺寸、文件格式和主图字段映射。</li>
+</ul>
+</section>
+<section class="article-card">
+<h2>什么时候应该小样本重传？</h2>
+<p>如果错误集中在一两个字段，可以先复制 3 到 10 个代表性 SKU 做小样本上传，验证模板字段和值是否被接受。对于父子体关系，样本必须包含一个 parent 和该 parent 下的多个 child，否则无法确认 variation theme、relationship_type 和 child attribute 的组合是否真的成立。</p>
+<p>如果 Processing Report 仍然返回同一个 catalog conflict 或 variation restriction，不要继续大批量重传。此时应整理 SKU、ASIN、品牌、UPC/EAN、错误码、上传批次和你已经尝试的模板字段，作为 Seller Support 或内部 catalog team 的 case brief。</p>
+</section>
+<section class="article-card"><h2>建议流程</h2><ol><li>先解析 Processing Report。</li><li>按错误码分组。</li><li>先修阻断错误，再修内容质量错误。</li><li>每次只改一类问题，重新上传小样本验证。</li></ol><div class="article-cta"><a class="primary-link" href="/">上传报告自动诊断</a></div></section>
+<section class="article-card content-depth-card">
+<h2>把 Listing 上传错误拆成可执行队列</h2>
+<p>Listing 上传失败通常不是“文件坏了”，而是多个问题叠加。先按错误类型拆成创建 SKU、目录冲突、必填字段、变体关系和媒体抓取五类；每一类只选少量代表 SKU 复核，避免同时修改过多字段导致无法判断哪一步有效。</p>
+<p>如果 Processing Report 没有明确字段名，应优先查看错误信息和原始记录号，再回到当前模板确认该行所属商品类型。不要只凭错误码修改整列。</p>
+</section>
+<section class="article-card related-guides">
+<h2>相关 Amazon Flat File 指南</h2>
+<p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+<div class="guide-grid">
+<a href="/">Amazon Flat File Error Checker</a>
+<a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+<a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+<a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+</div>
+</section>
+</main>
+</body>
 </html>

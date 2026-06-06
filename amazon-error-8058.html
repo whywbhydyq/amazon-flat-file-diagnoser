@@ -1,73 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Error 8058 Fix | Invalid or Missing Field Value</title>
-    <meta name="description" content="Fix Amazon error 8058 by locating the field named in the Processing Report, checking required fields and valid values in the current category template, and resubmitting a corrected flat file." />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <link rel="canonical" href="https://flatfile.ymirtool.com/amazon-error-8058" />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="zh_CN" />
-    <meta property="og:url" content="https://flatfile.ymirtool.com/amazon-error-8058" />
-    <meta property="og:title" content="Amazon 8058 错误：字段值无效或缺少必填值 | Processing Report 修复指南" />
-    <meta property="og:description" content="Fix Amazon error 8058 by locating the field named in the Processing Report, checking required fields and valid values in the current category template, and resubmitting a corrected flat file." />
-    <meta property="og:site_name" content="Amazon Flat File Error Checker" />
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Amazon 8058 错误：字段值无效或缺少必填值","description":"Fix Amazon error 8058 by locating the field named in the Processing Report, checking required fields and valid values in the current category template, and resubmitting a corrected flat file.","inLanguage":"zh-CN","datePublished":"2026-05-21","dateModified":"2026-05-30","mainEntityOfPage":"https://flatfile.ymirtool.com/amazon-error-8058","author":{"@type":"Organization","name":"YmirTool"}}
-    </script>
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Amazon Flat File Error Checker","item":"https://flatfile.ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Amazon 8058 错误：字段值无效或缺少必填值","item":"https://flatfile.ymirtool.com/amazon-error-8058"}]}
-    </script>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
-    <main class="article-shell">
-      <section class="article-hero"><p class="eyebrow">Error 8058</p><h1>Amazon 8058 错误：字段值无效或缺少必填值</h1><p class="lead">8058 的判断重点不是先猜目录属性，而是定位 Processing Report 指向的具体字段。官方方向是 inventory file 中指定字段提供了无效值，或必填字段没有按当前模板要求填写。</p></section>
-      <p class="article-meta">Updated: 2026-05-30 - Independent seller utility, not affiliated with Amazon.</p>
-      <section class="article-card"><h2>优先检查字段</h2><p><code>attribute-name</code>、<code>product_type</code>、<code>item_type_keyword</code>、<code>recommended_browse_nodes</code>、当前模板 <code>Valid Values</code>。</p></section>
-      <section class="article-card"><h2>修复步骤</h2><ol><li>从 Processing Report 复制 attribute-name，回到原始 Flat File 的同一列。</li><li>打开当前分类模板的 Data Definitions / Valid Values 页，确认这个字段是否必填以及允许值。</li><li>不要把其它 marketplace、其它分类或旧模板里的枚举值复制到当前模板。</li><li>只改报错字段和受影响 SKU，重新上传最小文件验证。</li></ol><div class="article-cta"><a class="primary-link" href="/amazon-variation-triage">Diagnose variation structure</a><a class="primary-link" href="/">上传 Processing Report 自动分组</a></div></section>
-
-      <section class="article-card diagnostic-depth">
-        <h2>Processing Report 示例行</h2>
-        <p>下面是假设示例，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
-        <div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-FIELD-001</td><td>8058</td><td>item_type_keyword</td><td>27</td><td>The value provided for the specified field is invalid for this inventory file template.</td></tr></tbody></table></div>
-        <h3>修复前后示例</h3>
-        <pre class="example-code"><code>Before: item_type_keyword=custom-home-product
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amazon Error 8058 Fix | Invalid or Missing Field Value</title>
+<meta content="Amazon error 8058 means a field value failed validation. Check allowed values, template rules, and marketplace dropdown options before reuploading." name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://flatfile.ymirtool.com/amazon-error-8058" rel="canonical"/>
+<link href="https://flatfile.ymirtool.com/rsl.xml" rel="license" type="application/rsl+xml"/>
+<meta content="article" property="og:type"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="https://flatfile.ymirtool.com/amazon-error-8058" property="og:url"/>
+<meta content="Amazon 8058 错误：字段值无效或缺少必填值 | Processing Report 修复指南" property="og:title"/>
+<meta content="Amazon error 8058 means a field value failed validation. Check allowed values, template rules, and marketplace dropdown options before reuploading." property="og:description"/>
+<meta content="Amazon Flat File Error Checker" property="og:site_name"/><meta content="https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png" property="og:image"/><meta content="https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="Amazon feed error code library showing 8541, 99010, 8036, and 8560 diagnostic cards." property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png" name="twitter:image"/><meta content="Amazon feed error code library showing 8541, 99010, 8036, and 8560 diagnostic cards." name="twitter:image:alt"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://flatfile.ymirtool.com/amazon-error-8058#article",
+  "description": "Amazon error 8058 means a field value failed validation. Check allowed values, template rules, and marketplace dropdown options before reuploading.",
+  "inLanguage": "zh-CN",
+  "dateModified": "2026-06-07",
+  "url": "https://flatfile.ymirtool.com/amazon-error-8058",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ymirtool.com/#organization",
+    "name": "Ymir Tool",
+    "url": "https://ymirtool.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://flatfile.ymirtool.com/#logo",
+      "url": "https://flatfile.ymirtool.com/icons/icon-512.png",
+      "contentUrl": "https://flatfile.ymirtool.com/icons/icon-512.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "isPartOf": {
+    "@id": "https://flatfile.ymirtool.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png",
+    "contentUrl": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png",
+    "thumbnailUrl": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.webp",
+    "caption": "Amazon feed error code library for flat file upload troubleshooting.",
+    "width": 1200,
+    "height": 630,
+    "encodingFormat": "image/png",
+    "creator": {
+      "@id": "https://ymirtool.com/#organization"
+    },
+    "copyrightHolder": {
+      "@id": "https://ymirtool.com/#organization"
+    }
+  },
+  "headline": "Amazon 8058 错误：字段值无效或缺少必填值",
+  "datePublished": "2026-05-21",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://flatfile.ymirtool.com/amazon-error-8058",
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png",
+      "contentUrl": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png",
+      "thumbnailUrl": "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.webp",
+      "caption": "Amazon feed error code library for flat file upload troubleshooting.",
+      "width": 1200,
+      "height": 630,
+      "encodingFormat": "image/png"
+    }
+  },
+  "author": {
+    "@id": "https://ymirtool.com/#organization"
+  },
+  "image": [
+    "https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Amazon Processing Reports"
+    },
+    {
+      "@type": "Thing",
+      "name": "Amazon flat file error codes"
+    },
+    {
+      "@type": "Thing",
+      "name": "Seller Central feed errors"
+    }
+  ],
+  "keywords": [
+    "Amazon Processing Reports",
+    "Amazon flat file error codes",
+    "Seller Central feed errors",
+    "Amazon 8058 错误：字段值无效或缺少必填值"
+  ],
+  "citation": "https://flatfile.ymirtool.com/answer-engine-summary.txt"
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Amazon Flat File Error Checker",
+      "item": "https://flatfile.ymirtool.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Amazon 8058 错误：字段值无效或缺少必填值",
+      "item": "https://flatfile.ymirtool.com/amazon-error-8058"
+    }
+  ],
+  "@id": "https://flatfile.ymirtool.com/amazon-error-8058#breadcrumb"
+}</script>
+<link href="./styles.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark">AF</span><div><strong>Amazon Flat File 错误诊断器</strong><span>返回工具首页</span></div></a></header>
+<main class="article-shell">
+<section class="article-hero"><p class="eyebrow">Error 8058</p><h1>Amazon 8058 错误：字段值无效或缺少必填值</h1><p class="lead">8058 的判断重点不是先猜目录属性，而是定位 Processing Report 指向的具体字段。官方方向是 inventory file 中指定字段提供了无效值，或必填字段没有按当前模板要求填写。</p></section>
+<p class="article-meta">Updated: 2026-06-07 - Independent seller utility, not affiliated with Amazon.</p>
+<section class="article-card"><h2>优先检查字段</h2><p><code>attribute-name</code>、<code>product_type</code>、<code>item_type_keyword</code>、<code>recommended_browse_nodes</code>、当前模板 <code>Valid Values</code>。</p></section>
+<section class="article-card"><h2>修复步骤</h2><ol><li>从 Processing Report 复制 attribute-name，回到原始 Flat File 的同一列。</li><li>打开当前分类模板的 Data Definitions / Valid Values 页，确认这个字段是否必填以及允许值。</li><li>不要把其它 marketplace、其它分类或旧模板里的枚举值复制到当前模板。</li><li>只改报错字段和受影响 SKU，重新上传最小文件验证。</li></ol><div class="article-cta"><a class="primary-link" href="/amazon-variation-triage">Diagnose variation structure</a><a class="primary-link" href="/">上传 Processing Report 自动分组</a></div></section>
+<section class="article-card diagnostic-depth">
+<h2>Processing Report 示例行</h2>
+<p>下面是假设示例，用来说明在报告中应优先定位哪些列。真实修复仍以你自己的 Processing Report、分类模板和 Seller Central 后台提示为准。</p>
+<div class="table-wrap"><table class="article-table"><thead><tr><th>sku</th><th>error-code</th><th>attribute-name</th><th>original-record-number</th><th>error-message</th></tr></thead><tbody><tr><td>SKU-FIELD-001</td><td>8058</td><td>item_type_keyword</td><td>27</td><td>The value provided for the specified field is invalid for this inventory file template.</td></tr></tbody></table></div>
+<h3>修复前后示例</h3>
+<pre class="example-code"><code>Before: item_type_keyword=custom-home-product
 After:  item_type_keyword=water-bottles  # use a value from the current template Valid Values tab</code></pre>
-      </section>
-
-      <section class="article-card field-table-card">
-        <h2>字段定位表</h2>
-        <p>先用 Processing Report 的 <code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
-        <div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>attribute-name</code></td><td>Processing Report 指向的具体字段</td><td>不要先猜品牌或分类；先定位报告中的字段名</td></tr><tr><td><code>Valid Values</code></td><td>字段允许值列表是否包含当前值</td><td>从当前分类模板复制允许值，不手写枚举</td></tr><tr><td><code>product_type / item_type_keyword</code></td><td>类目字段会影响后续必填字段组</td><td>确认模板来自当前 marketplace 和当前商品分类</td></tr><tr><td><code>required fields</code></td><td>必填字段是否为空或和其它字段冲突</td><td>按模板中加粗或 required 标记补齐</td></tr></tbody></table></div>
-        <h3>重新上传前 checklist</h3>
-        <ul>
-          <li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
-          <li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
-          <li>保存为制表符分隔文本或 Seller Central 要求的格式后再上传。</li>
-          <li>重新上传后下载新的 Processing Report，确认同一字段或错误码不再出现。</li>
-        </ul>
-      </section>
-
-      <section class="article-card source-card">
-        <h2>规则来源与最终确认</h2>
-        <p>本页规则依据 Amazon Seller Central Error 8058 官方帮助页：当库存文件模板中指定字段提供了无效值时会触发该错误。 如果 Processing Report 中的原始错误信息与本页示例不一致，应优先相信你自己的报告和当前分类模板。</p>
-        <div class="article-cta"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G24501" target="_blank" rel="noopener">Amazon Seller Central Error 8058</a><a href="/amazon-error-99010">99010 缺少必填字段</a><a href="/amazon-error-8560">8560 SKU 创建失败</a><a href="/amazon-feed-error-codes">Feed error codes 总览</a><a class="primary-link" href="/">上传报告自动分组</a></div>
-      </section>
-
-      <section class="article-card related-guides">
-        <h2>相关 Amazon Flat File 指南</h2>
-        <p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
-        <div class="guide-grid">
-          <a href="/">Amazon Flat File Error Checker</a>
-          <a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
-          <a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
-          <a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
-        </div>
-      </section>
-    </main>
-    <script defer src="/_vercel/insights/script.js"></script>
-  </body>
+</section>
+<section class="article-card field-table-card">
+<h2>字段定位表</h2>
+<p>先用 Processing Report 的 <code>attribute-name</code> 和 <code>original-record-number</code> 回到原始 Flat File 行，再按下表逐列检查。</p>
+<div class="table-wrap"><table class="article-table"><thead><tr><th>字段</th><th>检查重点</th><th>修复动作</th></tr></thead><tbody><tr><td><code>attribute-name</code></td><td>Processing Report 指向的具体字段</td><td>不要先猜品牌或分类；先定位报告中的字段名</td></tr><tr><td><code>Valid Values</code></td><td>字段允许值列表是否包含当前值</td><td>从当前分类模板复制允许值，不手写枚举</td></tr><tr><td><code>product_type / item_type_keyword</code></td><td>类目字段会影响后续必填字段组</td><td>确认模板来自当前 marketplace 和当前商品分类</td></tr><tr><td><code>required fields</code></td><td>必填字段是否为空或和其它字段冲突</td><td>按模板中加粗或 required 标记补齐</td></tr></tbody></table></div>
+<h3>重新上传前 checklist</h3>
+<ul>
+<li>只保留 1-3 个受影响 SKU 做最小复现文件，避免整表反复失败。</li>
+<li>确认模板来自当前 marketplace、当前商品分类和最新版 Seller Central。</li>
+<li>保存为制表符分隔文本或 Seller Central 要求的格式后再上传。</li>
+<li>重新上传后下载新的 Processing Report，确认同一字段或错误码不再出现。</li>
+</ul>
+</section>
+<section class="article-card content-depth-card">
+<h2>8058 的第一步是定位字段，不是猜值</h2>
+<p>8058 可以由枚举值、日期、数字范围、单位、分类必填属性或模板版本不匹配触发。先把 Processing Report 的 <code>attribute-name</code> 映射回原始列，再判断是值为空、值格式不对，还是字段在当前模板里根本不适用。</p>
+<h3>复核前准备</h3>
+<ul>
+<li>记录字段名、原始值、模板 Data Definitions 中的 accepted values。</li>
+<li>检查是否把中文标点、单位、货币符号或额外空格写进枚举字段。</li>
+<li>若同一字段多行失败，优先修模板列或批量生成逻辑，不要逐行手改。</li>
+</ul>
+</section>
+<section class="article-card programmatic-differentiator">
+<h2>程序化页面唯一诊断：8058 的核心是允许值表</h2>
+<p>8058 页面需要和 13013、99010 区分开。8058 通常表示字段有值，但该值不在当前 product_type 的允许值集合内。最常见误区是把前台展示词、其它站点模板值或人工翻译词填进上传模板。应回到模板的 Valid Values / Data Definitions tab，用 Amazon 当前允许的枚举重填，而不是把错误值改成看起来更自然的文案。</p>
+<ul>
+<li>先核对 product_type，因为 allowed values 随分类变化。</li><li>不要把前台筛选项直接复制到 flat file 枚举列。</li><li>如果同一列多行报错，先统一映射表再批量替换。</li>
+</ul>
+</section>
+<section class="article-card programmatic-fingerprint">
+<h2>程序化模板差异化字段指纹</h2>
+<p>下列检查点只适用于本错误码，用于把本页和其它错误码页区分开。若这些指纹与你的 Processing Report 不匹配，不要按本页硬套，应回到实际错误信息重新分组。</p>
+<div class="table-wrap"><table class="article-table"><thead><tr><th>指纹 A</th><th>指纹 B</th><th>指纹 C</th><th>指纹 D</th></tr></thead><tbody><tr><td><code>allowed_value_lookup</code></td><td><code>valid_values_sheet</code></td><td><code>category_enum</code></td><td><code>closed_vocabulary</code></td></tr><tr><td><code>translated_value_risk</code></td><td><code>front_end_label</code></td><td><code>upload_enum_value</code></td><td><code>localized_label_mismatch</code></td></tr><tr><td><code>bulk_mapping_table</code></td><td><code>invalid_to_allowed</code></td><td><code>enum_normalization</code></td><td><code>replacement_dictionary</code></td></tr><tr><td><code>product_type_dependency</code></td><td><code>classification_specific_enum</code></td><td><code>template_constraint</code></td><td><code>valid_value_context</code></td></tr></tbody></table></div>
+</section>
+<section class="article-card source-card">
+<h2>规则来源与最终确认</h2>
+<p>本页规则依据 Amazon Seller Central Error 8058 官方帮助页：当库存文件模板中指定字段提供了无效值时会触发该错误。 如果 Processing Report 中的原始错误信息与本页示例不一致，应优先相信你自己的报告和当前分类模板。</p>
+<div class="article-cta"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G24501" rel="noopener" target="_blank">Amazon Seller Central Error 8058</a><a href="/amazon-error-99010">99010 缺少必填字段</a><a href="/amazon-error-8560">8560 SKU 创建失败</a><a href="/amazon-feed-error-codes">Feed error codes 总览</a><a class="primary-link" href="/">上传报告自动分组</a></div>
+</section>
+<section class="article-card related-guides">
+<h2>相关 Amazon Flat File 指南</h2>
+<p>如果 Processing Report 中还有其它错误码，可以返回工具首页上传报告自动分组，或继续查看错误码总览和上传失败排查流程。</p>
+<div class="guide-grid">
+<a href="/">Amazon Flat File Error Checker</a>
+<a href="/amazon-feed-error-codes">Amazon Feed Error Codes 中文总览</a>
+<a href="/amazon-processing-report">Processing Report 中文阅读指南</a>
+<a href="/amazon-flat-file-upload-failed">Flat File 上传失败排查流程</a>
+</div>
+</section>
+</main>
+</body>
 </html>

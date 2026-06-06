@@ -1,4 +1,43 @@
+License: https://flatfile.ymirtool.com/rsl.xml
+# Search crawler policy: keep public SEO pages crawlable.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI search / citation crawlers: allow discovery surfaces for answer engines.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI training crawlers: opt out of bulk model-training reuse while preserving search access above.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Default: allow public pages, keep internal/report surfaces out of crawl paths.
 User-agent: *
 Allow: /
+Disallow: /.git/
+Disallow: /.seo-cache/
+Disallow: /docs/
+Disallow: /*.md$
 
 Sitemap: https://flatfile.ymirtool.com/sitemap.xml
