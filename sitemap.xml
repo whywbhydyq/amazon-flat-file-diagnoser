@@ -1,219 +1,51 @@
 <?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://flatfile.ymirtool.com/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-diagnoser-og.png</image:loc>
-      <image:caption>Amazon Flat File Error Checker dashboard preview with upload and variation triage workflow.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/about</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-diagnoser-og.png</image:loc>
-      <image:caption>Amazon Flat File Error Checker dashboard preview with upload and variation triage workflow.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-13013</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-20000</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-8008</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-8036</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-8058</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-8541</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-8560</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-90112</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-90244</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-error-99010</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-feed-error-codes</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-error-code-library-og.png</image:loc>
-      <image:caption>Amazon feed error code library for flat file upload troubleshooting.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-flat-file-error-checker-alternatives</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-tool-comparison-og.png</image:loc>
-      <image:caption>Task-based comparison of Amazon flat file checker alternatives.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-flat-file-error-checker-citation-kit</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-citation-kit-og.png</image:loc>
-      <image:caption>Citation kit for referencing Amazon Flat File Error Checker in tutorials and AI answers.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-flat-file-repair-flow</loc>
-    <lastmod>2026-06-07</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-repair-flow-og.png</image:loc>
-      <image:caption>Amazon flat file repair FLOW loop for evidence-led upload troubleshooting.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-flat-file-upload-failed</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-processing-report-diagnosis-og.png</image:loc>
-      <image:caption>Amazon Processing Report diagnosis workflow for flat file upload errors.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-inventory-file-template</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/amazon-listing-upload-error</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-parent-child-variation-error</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-processing-report</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-processing-report-diagnosis-og.png</image:loc>
-      <image:caption>Amazon Processing Report diagnosis workflow for flat file upload errors.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-variation-flat-file-error</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://flatfile.ymirtool.com/amazon-variation-triage</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-variation-triage-workflow-og.png</image:loc>
-      <image:caption>Parent-child variation triage workflow for Amazon flat file repair.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/contact</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-review-service-og.png</image:loc>
-      <image:caption>Manual Amazon flat file review handoff for anonymized repair requests.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/disclaimer</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-diagnoser-og.png</image:loc>
-      <image:caption>Amazon Flat File Error Checker dashboard preview with upload and variation triage workflow.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/privacy-policy</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-diagnoser-og.png</image:loc>
-      <image:caption>Amazon Flat File Error Checker dashboard preview with upload and variation triage workflow.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://flatfile.ymirtool.com/terms</loc>
-    <lastmod>2026-06-06</lastmod>
-    <image:image>
-      <image:loc>https://flatfile.ymirtool.com/images/amazon-flat-file-diagnoser-og.png</image:loc>
-      <image:caption>Amazon Flat File Error Checker dashboard preview with upload and variation triage workflow.</image:caption>
-    </image:image>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
   </url>
 </urlset>

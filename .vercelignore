@@ -1,0 +1,7 @@
+.git
+.github
+docs
+CHANGELOG_*.md
+README.md
+package-lock.json
+node_modules

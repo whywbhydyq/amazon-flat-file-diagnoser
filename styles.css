@@ -42,15 +42,6 @@ button {
   cursor: pointer;
 }
 
-:where(a, button, input, select, textarea):focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 3px;
-}
-
-.disabled-link[aria-disabled="true"] {
-  opacity: 0.68;
-}
-
 .topbar {
   position: sticky;
   top: 0;
@@ -807,7 +798,7 @@ h3 {
 }
 
 
-/* === rule source and long-tail evidence sections START === */
+/* === rule source and evidence sections START === */
 .rule-source {
   margin: 10px 0 12px;
   border-left: 3px solid var(--blue);
@@ -869,7 +860,7 @@ h3 {
   line-height: 1.7;
   white-space: pre-wrap;
 }
-/* === rule source and long-tail evidence sections END === */
+/* === rule source and evidence sections END === */
 
 /* === variation triage upgrade START === */
 .optional-upload {
@@ -1003,20 +994,6 @@ h3 {
   color: #40505c;
   line-height: 1.6;
 }
-
-.service-note {
-  margin: 8px 0 0;
-  color: #40505c;
-  line-height: 1.7;
-}
-.commerce-boundary ul {
-  margin: 12px 0 0;
-  padding-left: 22px;
-}
-.commerce-boundary li {
-  margin-bottom: 10px;
-}
-
 .request-form {
   display: grid;
   gap: 16px;
@@ -1112,7 +1089,7 @@ h3 {
 /* === repair preview split END === */
 
 
-/* === SEO and long-tail optimization START === */
+/* === article and task-page refinements START === */
 .hero-boundary,
 .input-boundary {
   margin-top: 12px;
@@ -1133,213 +1110,4 @@ h3 {
 .compact-tool-cta p {
   margin-bottom: 0;
 }
-/* === SEO and long-tail optimization END === */
-
-.intent-band .section-heading {
-  align-items: flex-start;
-}
-.section-note {
-  max-width: 440px;
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-.intent-grid,
-.persona-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-.intent-card,
-.persona-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 16px;
-  background: #fff;
-}
-.intent-card {
-  color: inherit;
-  text-decoration: none;
-}
-.intent-card:hover,
-.persona-card:hover {
-  border-color: #91b7b1;
-  background: #f4fbf9;
-}
-.intent-card strong,
-.intent-card small,
-.intent-kicker,
-.persona-card strong,
-.persona-card p,
-.persona-card a {
-  display: block;
-}
-.intent-kicker {
-  margin-bottom: 8px;
-  color: var(--teal-strong);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.intent-card strong,
-.persona-card strong {
-  color: var(--ink);
-  line-height: 1.35;
-}
-.intent-card small,
-.persona-card p {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.65;
-}
-.sxo-note {
-  margin-top: 14px;
-  border-left: 3px solid var(--teal);
-  border-radius: 8px;
-  padding: 12px 14px;
-  color: #40505c;
-  background: var(--green-soft);
-  line-height: 1.7;
-}
-.persona-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.persona-card a {
-  margin-top: 12px;
-  color: var(--teal-strong);
-  font-weight: 800;
-  text-decoration: none;
-}
-.persona-card a:hover {
-  text-decoration: underline;
-}
-@media (max-width: 900px) {
-  .intent-grid,
-  .persona-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 620px) {
-  .intent-grid,
-  .persona-grid {
-    grid-template-columns: 1fr;
-  }
-  .section-note {
-    max-width: none;
-  }
-}
-
-/* === Stage 27 seo-visual: above-fold CTA and touch-target polish START === */
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 18px 0 0;
-}
-.hero-actions a {
-  text-decoration: none;
-}
-.top-actions a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 4px;
-}
-.primary-button,
-.secondary-button,
-.ghost-button,
-.ghost-link,
-.icon-button {
-  min-height: 44px;
-  flex-shrink: 0;
-}
-.icon-button {
-  min-width: 44px;
-  width: 44px;
-}
-@media (max-width: 560px) {
-  .hero-actions {
-    gap: 10px;
-  }
-  .hero-actions .primary-button,
-  .hero-actions .secondary-button {
-    width: 100%;
-  }
-  .sample-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-  }
-  .sample-row .ghost-button,
-  .sample-row .ghost-link {
-    min-width: 0;
-    width: 100%;
-    min-height: 44px;
-    white-space: normal;
-    text-align: center;
-  }
-  .sample-row .icon-button {
-    grid-column: 1 / -1;
-    justify-self: start;
-  }
-}
-/* === Stage 27 seo-visual: above-fold CTA and touch-target polish END === */
-/* Stage 27 visual overflow fix: allow sample actions to wrap inside upload panel. */
-.sample-row {
-  flex-wrap: wrap;
-}
-
-
-/* Stage 39: FLOW repair loop */
-.flow-hero .flow-attribution {
-  color: var(--muted);
-  font-size: 0.92rem;
-  margin-top: 1rem;
-}
-.flow-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-}
-.flow-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.1rem;
-  box-shadow: var(--shadow-sm);
-}
-.flow-card > span {
-  display: inline-flex;
-  width: 2rem;
-  height: 2rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-  font-weight: 800;
-  margin-bottom: 0.6rem;
-}
-.flow-card h3 {
-  margin: 0 0 0.45rem;
-}
-.flow-card ul {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
-  color: var(--muted);
-}
-.flow-card li + li {
-  margin-top: 0.35rem;
-}
-.flow-decision-grid a,
-.flow-loop-mini .scenario-grid a {
-  min-height: 130px;
-}
-@media (max-width: 980px) {
-  .flow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 640px) {
-  .flow-grid { grid-template-columns: 1fr; }
-}
+/* === article and task-page refinements END === */

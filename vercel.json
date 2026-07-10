@@ -7,14 +7,6 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=63072000; includeSubDomains; preload"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'sha256-4DitXKQ6VFIuZ1oGQUpaclkvyrqEuOqf32xEKz+EkZ8=' 'sha256-bNvQBw8XF63HNT7xdXYNZH67wvOfPEV7AlOa+wRJMk4=' 'sha256-JUgwInzPEdR9JL0ztgLLrFLDbY/YQiMUKCi9mfzNXC0=' 'sha256-BtckP/NnlD+HlsJazmNtO/OeRFtYuE4sEmLKb2XEHNE=' 'sha256-bHOJpdSlbZhmC+gWlspX50cTLfOSBRGES3M/ra1Zx+U=' 'sha256-oVhKklnZpvxx+lHK2SiYZr79VhGAVOF0X4n/6B+zlWc=' 'sha256-hAxm9jU6vVhLys3rjPsDi/xYzPCPXuinqXLHCYSW1iY=' 'sha256-cf/NGd02SIJkoc0oB4naPLYmpkyJx6wJ5G0+7FObvNI=' 'sha256-2/e4t1vow91U1j3AHXTsuwORupbg6YbvSgXc3NJq8sU=' 'sha256-qKIxw9DvSEtjBGPBZyrCO/iSeu/ZEpYLw6fh5H2Uya4=' 'sha256-gvR0dW3UHbq+p+mZnwRDJ+tt13PvuS14uo8vJhBN63Y=' 'sha256-fn0zGt9w4I5HpxQ/kp2KF9rI79PG6AexVhTdxNYwqrQ=' 'sha256-NDBSzLqMxm/XhU4RFk6YPgfAz0OFAvLcHgbAR+PH1hI=' 'sha256-1wPt5T8oVYi1MRsc0LycBQZafKcA8bBSAK+jBVE/uLY=' 'sha256-n4ZPfA6wsD1Y/+cUlltSmWzyZhAKLQURRFWv+b0eHvI=' 'sha256-uZv7ZVCNWFhjZ+kiL/VF35nnFh+HigmtuKl3xobHLKQ=' 'sha256-XKIKkB/CZUPIvrkJ+nP3NlRmbXeGI+m4RuYCP0YykR4=' 'sha256-UfsIApQcxAo6jKc4nk8HqqY6jvbxvjjEZG4NOWIntyM=' 'sha256-1oulja23kaAAmcQpynn+AwDGtP30XyyEgnY2YGLMWyI=' 'sha256-EZPt/fpah4+laXZoCtkyXQqMUgUFLLWWVjdmUuf0+Uw=' 'sha256-lWWGa0tRil3UcV+ARRDvB7YSR74SzlXZi6PbuKRCE0g=' 'sha256-F7C93XIRAFxk4zN9FBbLZTW66spP2xBlEZFt9H2yvv0=' 'sha256-x3SpQjtkuFbjaS+K2+JDoLWgKuE4wVU7YhOlxLiuW7c=' 'sha256-8DFWhRBhbJnaMik6+HduC1FPNXcDmRlv5wTv0cWbQi0=' 'sha256-RkPhzPw1QQ+kJkwWQu+zEgNb6IObUCXRMiz7x4pia3s=' 'sha256-bnqwXlKRmUa1pEWDYMi4fSzAjCpvIGK0EG9Ju0HgEPQ=' 'sha256-w3S4uo0IbGGnqF48LWrR202bJoAhxxkOCBQTVthhyCo=' 'sha256-e8ZHwoy07wci1ILn4y6joslm6jIv9M9uRPDhH8S1iyk=' 'sha256-kFs5IFt9Ejr8kJvW79dsI5NPTTIPNFW4XQ74jmk7S1E=' 'sha256-+hu4tS0hxiv9+sSVRT5QbiLnJYkTUQgFUg/ELqb2Fk0=' 'sha256-8gM1tMcADX1PSMni2y7IrrbO8B7WHujwfM7LFLqOVbc=' 'sha256-+Zd9RQdLBX2qAfPR53MMBZEFgTkqUmqsKc7yn3AtRGc=' 'sha256-g943a2hWq9Kwos/eOZfRZvglwo6PMm1Tep/IZmRXP00=' 'sha256-4StIg2FeoRKHaxG5/UY5OKOK+Stbksea4wYqH3Ummaw=' 'sha256-oiad2Lbm4VPzf/zfspKPs6CF5gN5lILrXTuGs3Wa7v8=' 'sha256-lGMzNBqb9mUcL9Rhebd4pbiNz7oIGX4Nu4i6pvj01JQ=' 'sha256-jjnkecVyTCO2AIQbf4JCt7uEe24TNrXibOFbQ3k241g=' 'sha256-nlLwitknRee4yUaYzB0ANLMwVeiuXM/3JIPbbcG0+MM=' 'sha256-ef/5Ig6JDHIGcTb1PAG+Me/9C5Exp274+L9/sCJ6oxQ=' 'sha256-j++17ojWut2E5MkfIczWn9/zX3ua/Ww2EH88uwDI4MM=' 'sha256-Ld8OVfQxpw7TMD3EpoKA0eP/mkXmGk0ji/amMljB9DQ=' 'sha256-3Ka9BeyzYMMN7ClxLnjX1DPD/a8MKgaHvoiCwpfbQqU=' 'sha256-hg8jxqjCD/I6rsak50jX4q65txJED+FPqqSxh0klQbw=' 'sha256-K6/4uo/bcsiCw/Z95olCmb2Ly9MLUijwB9x4Y8mCFTA=' 'sha256-XCrxSzqtivSActkU+Lf7POhcG1wpe20ETDP8pMM+Zu8=' 'sha256-/eFZ2zk2zEcnlslYTd1Z56j8vOMDPhKJ+hpNYBp/U3E=' 'sha256-X+Lf6ZZN1g0AwmXEQsPmmG8EUo9lYnG3u/emCjWgzGE=' 'sha256-yhKrqaIvSI8XYCQD/AycKHrNyXbaU753zf1CbZ8OSSs=' 'sha256-FsNZ/v8nYEAxo93thsTvUoKqiGYfPdXELIRiCcd3y+0=' 'sha256-LbseUMKg3S/du2xo/uKFiMtO3de/s6cfLUndrdcWaLg=' 'sha256-Q4oZuf6yk+2ETViW03LdcVVt5geRVBMXi1F9o+mEQ+s=' 'sha256-vu1qF53+13K3wc/Iw3PwnsZqJPg29YHxYcFzmQsz1mc=' 'sha256-gVxzkmqoz3dPY2hGiNuYnLVlpli35KzttLd8QvPOiKg=' 'sha256-48j54m0ECJ0MYHDleNGoXqev9B7sgwK/M4GWbkb2k+8='; script-src-attr 'none'; style-src 'self'; style-src-elem 'self'; style-src-attr 'none'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; form-action 'self' mailto:; manifest-src 'self'; frame-src 'none'; worker-src 'none'; upgrade-insecure-requests"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
@@ -28,31 +20,11 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
-          "key": "Cross-Origin-Opener-Policy",
-          "value": "same-origin"
-        },
-        {
-          "key": "Cross-Origin-Resource-Policy",
-          "value": "same-origin"
-        },
-        {
-          "key": "X-Permitted-Cross-Domain-Policies",
-          "value": "none"
-        },
-        {
-          "key": "X-DNS-Prefetch-Control",
-          "value": "off"
-        },
-        {
-          "key": "Origin-Agent-Cluster",
-          "value": "?1"
-        },
-        {
-          "key": "Link",
-          "value": "<https://flatfile.ymirtool.com/rsl.xml>; rel=\"license\"; type=\"application/rsl+xml\""
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
         }
       ]
     },
@@ -61,16 +33,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/contact.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
         }
       ]
     },
@@ -79,120 +42,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/scripts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/llms.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/answer-engine-summary.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/rsl.xml",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/ads.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/humans.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/site.webmanifest",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
+          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
         }
       ]
     },
@@ -201,55 +51,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/samples/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/.well-known/security.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/affd2839c7c4efab67b5de175554cc19.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }

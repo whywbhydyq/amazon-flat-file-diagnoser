@@ -1,7 +1,6 @@
 const $ = (selector, root = document) => root.querySelector(selector);
 
 function trackEvent(name, props = {}) {
-  if (window.AFFDTracking?.trackEvent) return window.AFFDTracking.trackEvent(name, props);
   const payload = { tool: "amazon_flat_file_diagnoser", ...props };
   try {
     if (window.va?.track) window.va.track(name, payload);
@@ -83,36 +82,11 @@ function githubIssueUrl(data, publicBrief) {
   return `https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(publicBrief)}`;
 }
 
-const INQUIRY_EMAIL = "flatfile@ymirtool.com";
-const MAX_URL_LENGTH = 1800;
-const SENSITIVE_PUBLIC_PATTERNS = [
-  /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i,
-  /https?:\/\//i,
-  /\b(order|buyer|customer|seller central|merchant token|account|login|password|case id)\b/i,
-  /\b\+?\d[\d\s().-]{7,}\d\b/
-];
+const INQUIRY_EMAIL = "ymirtool@ymirtool.com";
 
 function mailtoUrl(data, privateBrief) {
   const subject = `[${labelForRequest(data.requestType)}] Amazon flat file review request`;
   return `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(privateBrief)}`;
-}
-
-function compactMailtoUrl(data) {
-  const subject = `[${labelForRequest(data.requestType)}] Amazon flat file review request`;
-  return `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}`;
-}
-
-function containsPublicSensitiveText(data) {
-  const text = [data.issueSummary, data.tried, data.errorCodes, data.marketplace].join("\n");
-  return SENSITIVE_PUBLIC_PATTERNS.some(pattern => pattern.test(text));
-}
-
-function setLinkState(link, href, { disabled = false, label = "" } = {}) {
-  if (!link) return;
-  link.href = href;
-  link.classList.toggle("disabled-link", disabled);
-  link.setAttribute("aria-disabled", disabled ? "true" : "false");
-  if (label) link.title = label;
 }
 
 function safeTrackedHref(href = "") {
@@ -136,7 +110,6 @@ const copyBtn = $("#copyRequestBrief");
 const copyPublicBtn = $("#copyPublicRequestBrief");
 const issueLink = $("#openGithubIssue");
 const emailDraftLink = $("#openEmailDraft");
-const handoffWarning = $("#handoffWarning");
 
 setFromQuery();
 
@@ -149,39 +122,8 @@ if (form) {
 
     briefBox.value = privateBrief;
     if (publicBriefBox) publicBriefBox.value = publicBrief;
-    const fullMailto = mailtoUrl(data, privateBrief);
-    const fullIssueUrl = githubIssueUrl(data, publicBrief);
-    const warnings = [];
-
-    if (fullMailto.length > MAX_URL_LENGTH) {
-      setLinkState(emailDraftLink, compactMailtoUrl(data), {
-        disabled: false,
-        label: "Brief is too long for a reliable mailto URL. Copy the private brief and paste it into the email body."
-      });
-      warnings.push("Private brief is long, so the email draft link only opens the address and subject. Copy the private brief and paste it manually.");
-    } else {
-      setLinkState(emailDraftLink, fullMailto);
-    }
-
-    if (fullIssueUrl.length > MAX_URL_LENGTH) {
-      setLinkState(issueLink, "https://github.com/whywbhydyq/amazon-flat-file-diagnoser/issues/new", {
-        disabled: false,
-        label: "Public brief is too long for a reliable GitHub issue URL. Copy the public-safe brief manually."
-      });
-      warnings.push("Public GitHub issue text is long, so the link opens a blank issue. Copy the public-safe brief and paste it manually.");
-    } else {
-      setLinkState(issueLink, fullIssueUrl);
-    }
-
-    if (containsPublicSensitiveText(data)) {
-      warnings.push("Potential sensitive text detected in the public-safe brief. Review and remove emails, URLs, phone/order/account details, and store-specific identifiers before posting publicly.");
-    }
-
-    if (handoffWarning) {
-      handoffWarning.textContent = warnings.join(" ");
-      handoffWarning.classList.toggle("hidden", !warnings.length);
-    }
-
+    if (emailDraftLink) emailDraftLink.href = mailtoUrl(data, privateBrief);
+    issueLink.href = githubIssueUrl(data, publicBrief);
     output.classList.remove("hidden");
     output.scrollIntoView({ behavior: "smooth", block: "start" });
 

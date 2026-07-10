@@ -5,7 +5,9 @@
   "description": "A browser-only Amazon Processing Report and Flat File error checker with optional parent-child variation triage.",
   "scripts": {
     "start": "python -m http.server 4173 --bind 127.0.0.1",
-    "check": "node --check app.js && node --check contact.js && node --check scripts/ignore-old-commit.js"
+    "check": "node --check app.js && node --check contact.js && node --check scripts/ignore-old-commit.js",
+    "audit": "node scripts/audit-content.mjs",
+    "validate": "npm run check && npm run audit"
   },
   "keywords": [
     "amazon",
