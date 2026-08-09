@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **项目已退役 / Archived**
+>
+> 此工具已于 2026-08-08 停止维护和服务。原生产域名现返回 HTTP 410。请访问 https://ymirtool.com/。
+
 # Amazon Flat File 错误诊断器
 
 一个纯前端网页工具，用来解析 Amazon Flat File / Seller Central 批量上传后的 Processing Report。
